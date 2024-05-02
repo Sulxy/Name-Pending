@@ -16,7 +16,7 @@ function App() {
 			<Header/>
 
 			<Routes>
-				<!-- ADD BODY STUFF -->
+				{/* <!-- ADD BODY STUFF --> */}
 			</Routes>
 
 			<Footer/>
