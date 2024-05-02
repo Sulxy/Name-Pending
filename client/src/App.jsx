@@ -15,13 +15,13 @@ function App() {
 		<Router>
 			<Helmet defaultTitle="Home"
 			        titleTemplate="%s | Whisper"/>
-			<Header/>
+			<PageHeader/>
 
 			<Routes>
 				{/* <!-- ADD BODY STUFF --> */}
 			</Routes>
 
-			<Footer/>
+			<PageFooter/>
 		</Router>
 	);
 }
