@@ -1,10 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { useState } from 'react';
+// Import Components
 import { Footer, Header } from './components';
+import { Dashboard, Login } from './pages';
 
 // Load CSS
 import './assets/styles/main.scss';
-import { Helmet } from 'react-helmet';
 
 function App() {
 	const [count, setCount] = useState(0);
