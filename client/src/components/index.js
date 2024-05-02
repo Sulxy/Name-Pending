@@ -1,4 +1,7 @@
 // Export pages
-export { default as Footer } from './Footer';
-export { default as Header } from './Header';
-export { default as Menu } from './Menu';
+export { default as PageFooter } from './Page-Footer.jsx';
+export { default as PageHeader } from './Page-Header.jsx';
+export { default as PageMenu } from './Page-Menu.jsx';
+export { default as UserLogin } from './User-Login.jsx';
+export { default as UserLogout } from './User-Logout.jsx';
+export { default as UserRegister } from './User-Register.jsx';

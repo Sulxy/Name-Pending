@@ -1,8 +1,9 @@
-@use "values" as x; // Predefined values and settings
-@use "reset"; // Reset
-@use "sections/header"; // Page Header
-@use "sections/content"; // Content
-@use "sections/footer"; // Page Footer
+@use "values" as x;         // Predefined values and settings
+@use "reset";               // Reset
+@use "sections/header";     // Page PageHeader
+@use "sections/content";    // Content
+@use "sections/form";       // Forms
+@use "sections/footer";     // Page PageFooter
 
 #root,
 .content {

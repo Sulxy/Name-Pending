@@ -1,4 +1,4 @@
-export default function Footer() {
+export default function PageFooter() {
 	return (
 		<footer className="page-footer">
 			<p>Designed and coded by Danny Sanchez, Joshua Hale, Ray Beliveau, Samuel Bishop.</p>
