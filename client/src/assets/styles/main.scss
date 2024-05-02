@@ -1,0 +1,15 @@
+@use "values" as x; // Predefined values and settings
+@use "reset"; // Reset
+@use "sections/header"; // Page Header
+@use "sections/content"; // Content
+@use "sections/footer"; // Page Footer
+
+#root,
+.content {
+	display:   flex;
+	flex-flow: column nowrap;
+}
+
+.content {
+	margin-top: x.$header-height;
+}
