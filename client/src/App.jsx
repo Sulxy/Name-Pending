@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useState } from 'react';
 // Import Components
-import { Footer, Header } from './components';
-import { Dashboard, Login } from './pages';
+import { PageFooter, PageHeader } from './components';
+import { Home, User, Whispers } from './pages';
 
 // Load CSS
 import './assets/styles/main.scss';
@@ -14,7 +14,7 @@ function App() {
 	return (
 		<Router>
 			<Helmet defaultTitle="Home"
-			        titleTemplate="%s | Ray Beliveau"/>
+			        titleTemplate="%s | Whisper"/>
 			<Header/>
 
 			<Routes>
