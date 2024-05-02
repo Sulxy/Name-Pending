@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 $colors:        (
 		                border: rgba(0, 0, 0, 0.1),
 		                footer-font: white,
 		                header-bg: rgba(0, 0, 0, 0.9),
-		                header-font: white,
+		                header-font: #B0B0B0,
 		                header-link: white,
 		                link-active: darkslateblue,
 		                shadow: rgba(0, 0, 0, 0.3)
                 );
 
 // Fonts
+$font-title:    "Playfair Display", serif;
 $font-main:     Oswald, sans-serif;
 $font-sizes:    ( // @formatter:off
 		                xlarge:       3rem,
