@@ -1,1 +1,21 @@
-.form {}
+@use "../values" as x;         // Predefined values and settings
+
+.form {
+	padding: map-get(x.$sizes, "large");
+
+	border-radius: map-get(x.$sizes, "small");
+	box-shadow: map-get(x.$shadows, "large");
+
+	font-family: x.$font-main;
+
+	&__button,
+	&__input,
+	&__label {
+		padding: map-get(x.$sizes, "small");
+	}
+	&__message {}
+	&__row {
+		display: flex;
+		flex-flow: row nowrap;
+	}
+}

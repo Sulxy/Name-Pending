@@ -5,13 +5,20 @@
 @use "sections/form";       // Forms
 @use "sections/footer";     // Page PageFooter
 
+body {
+	font-size: 88%;
+}
+
 #root,
 .content {
-	display:   flex;
-	flex-flow: column nowrap;
+	display:     flex;
+	flex-flow:   column nowrap;
+	align-items: center;
 }
 
 .content {
+	display:    flex;
+	max-width:  1024px;
 	margin-top: x.$header-height;
 }
 
