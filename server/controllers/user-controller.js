@@ -17,7 +17,7 @@ module.exports = {
 
     res.json(foundUser);
   },
-  // create a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
+  // create a user, sign a token, and send it back (to client/src/components/_____) ---> whatever the signup form is called. 
   async createUser({ body }, res) {
     const user = await User.create(body);
 
@@ -27,49 +27,26 @@ module.exports = {
     const token = signToken(user);
     res.json({ token, user });
   },
-  // login a user, sign a token, and send it back (to client/src/components/LoginForm.js)
+  // login a user, sign a token, and send it back (to client/src/components/____) ---> whatever the login form is called.
   // {body} is destructured req.body
   async login({ body }, res) {
-    const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email }] });
-    if (!user) {
-      return res.status(400).json({ message: "Can't find this user" });
+    try {
+      const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email }] });
+      if (!user) {
+        return res.status(400).json({ success: false, message: "User not found" });
+      }
+  
+      const correctPw = await user.isCorrectPassword(body.password);
+  
+      if (!correctPw) {
+        return res.status(400).json({ success: false, message: 'Incorrect password' });
+      }
+      
+      const token = signToken(user);
+      return res.status(200).json({ success: true, token, user });
+    } catch (error) {
+      console.error('Error during login:', error);
+      return res.status(500).json({ success: false, message: 'Internal server error' });
     }
-
-    const correctPw = await user.isCorrectPassword(body.password);
-
-    if (!correctPw) {
-      return res.status(400).json({ message: 'Wrong password!' });
-    }
-    const token = signToken(user);
-    res.json({ token, user });
-  },
-// Save a book to a user's profile ----------------------------------------- Everything here down will need to be rewritten/adjusted 
-// async saveBook({ user, body }, res) { 
-//   try {
-//     const updatedUser = await User.findOneAndUpdate(
-//       { _id: user._id },
-//       { $addToSet: { savedBooks: body } },
-//       { new: true, runValidators: true }
-//     );
-//     res.json(updatedUser);
-//   } catch (err) {
-//     console.error('Error saving book:', err);
-//     res.status(500).json(err);
-//   }
-// },
-
-// // Remove a book from a user's profile
-// async deleteBook({ user, params }, res) {
-//   try {
-//     const updatedUser = await User.findOneAndUpdate(
-//       { _id: user._id },
-//       { $pull: { savedBooks: { bookId: params.bookId } } },
-//       { new: true }
-//     );
-//     res.json(updatedUser);
-//   } catch (err) {
-//     console.error('Error deleting book:', err);
-//     res.status(500).json(err);
-//   }
-// },
+  }
 };
