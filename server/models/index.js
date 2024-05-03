@@ -1,4 +1,4 @@
-const User = require('./uiahsdfjasdf');
+const User = require('./User');
 const Post = require('./Post');
 const Attachment = require('./Attachment');
 
