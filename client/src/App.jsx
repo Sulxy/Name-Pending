@@ -18,7 +18,9 @@ function App() {
 			<PageHeader/>
 
 			<Routes>
-				{/* <!-- ADD BODY STUFF --> */}
+				<Route path="/" component={Home}/>
+				<Route path="/user/*" element={<User/>}/>
+				<Route path="/whisper/*" element={<Whispers/>}/>
 			</Routes>
 
 			<PageFooter/>
