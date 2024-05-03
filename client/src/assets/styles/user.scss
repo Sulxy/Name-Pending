@@ -1,1 +1,16 @@
-.login {}
+@use "values" as x; // Predefined values and settings
+
+.login-form,
+.register-form {
+	display:   flex;
+	flex-flow: column nowrap;
+	gap:       map-get(x.$sizes, "medium");
+}
+
+.form {
+	&__label:not(&__label--checkbox) {width: map-get(x.$sizes, "xlarge");}
+	&__button {margin-left: auto;}
+	&__message {font-style: italic;}
+}
+
+.form__input--checkbox {margin-left: map-get(x.$sizes, "medium");}
