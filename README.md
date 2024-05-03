@@ -6,6 +6,8 @@ Whisper is a chatroom app. It allows users to create an account, and once logged
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
+- [Screenshots](#screenshots)
+- [Deployed Application](#deployed-application)
 - [License](#license)
 - [Contributing](#contributing)
 - [Tests](#tests)
@@ -16,6 +18,10 @@ Clone the repository, install the dependencies by navigating to the root directo
 
 ## Usage
 Create an account, and chat online with other people! 
+
+## Screenshots
+
+## Deployed Application
 
 ## License
 This project is licensed under the MIT license.
@@ -32,5 +38,5 @@ No tests written at this time.
 
 ## Questions
 If you have any questions, feel free to reach out to me:
-- Email: Joshuahale829@gmail.com
-- GitHub: [Sulxy](https://github.com/Sulxy)
+- Email: Joshuahale829@gmail.com, dannyproa303@gmail.com, Samuelbishop06@yahoo.com, Ray@RayBeliveau.com
+- GitHub: [Sulxy](https://github.com/Sulxy), [DannySanchez03](https://github.com/DannySanchez03), [Rayxis](https://github.com/rayxis), [SamBishop06](https://github.com/SamBishop06). 
