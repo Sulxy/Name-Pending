@@ -13,9 +13,10 @@
 
 	border:                 x.$border;
 	border-radius:          x.$border-radius;
+	box-shadow:             map-get(x.$shadows, "large");
 
-	font-family: x.$font-main;
-	font-size:   map-get(x.$font-sizes, "small");
+	font-family:            x.$font-main;
+	font-size:              map-get(x.$font-sizes, "small");
 
 	&__chat-input {
 		grid-area: input;
@@ -23,6 +24,7 @@
 
 	&__message-list {
 		grid-area: messages;
+		gap:       map-get(x.$sizes, "medium");
 		padding:   map-get(x.$sizes, "medium");
 	}
 
@@ -62,19 +64,27 @@
 	display:         flex;
 	flex-flow:       column nowrap;
 	list-style-type: none;
+	overflow-y:      scroll;
 
 	&__message {
-		display: flex;
+		display:   flex;
 		flex-flow: row nowrap;
 	}
 }
 
 .message {
-	&__text {
+
+	&__content {
 		flex-grow: 1;
 	}
+
+	&__timestamp {
+		flex-basis:  map-get(x.$sizes, "large");
+		flex-shrink: 0;
+	}
+
 	&__username {
-		flex-basis: map-get(x.$sizes, "xlarge");
+		flex-basis:  map-get(x.$sizes, "xlarge");
 		flex-shrink: 0;
 	}
 }

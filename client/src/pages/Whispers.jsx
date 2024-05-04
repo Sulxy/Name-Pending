@@ -1,15 +1,22 @@
 // User.jsx
 import React, { useState } from 'react';
+import { format } from 'date-fns';
 import { Helmet } from 'react-helmet';
 
+import {settings} from '../data/settings';
 // Load CSS
 import '../assets/styles/whispers.scss';
 
+/***
+ TODO: Use some method to map the userId in messages to the user in users. Ideally, it should be replaced.
+  This method below is just a placeholder for testing purposes
+ */
 // Load sample data
 import { users, messages } from '../data/whisperSampleData.js';
 
+
 export default () => {
-	const handleSendMessage = message => {}
+	const handleSendMessage = message => {};
 
 	return (
 		<main className="whispers">
@@ -27,16 +34,19 @@ export default () => {
 function MessageList() {
 	return (
 		<ul className="whispers__message-list message-list">
-			{messages.map(message => <Message key={message.id} {...message} />)}
+			{messages.map(message => <Message key={message.id}
+			                                  {...message}
+			                                  timestamp={format(new Date(message.timestamp), settings.timeFormat)} />)}
 		</ul>
 	);
 }
 
-function Message({ userId, text }) {
+function Message({ user, message, timestamp }) {
 	return (
 		<li className="message-list__message message">
-			<div className="message__username">{userId}</div>
-			<div className="message__text">{text}</div>
+			<time className="message__timestamp">{timestamp}</time>
+			<div className="message__username">{user.username}</div>
+			<p className="message__content">{message}</p>
 		</li>
 	);
 }
