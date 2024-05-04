@@ -1,1 +1,95 @@
-.whispers {}
+@use "values" as x; // Predefined values and settings
+
+.whispers {
+	display:                grid;
+	grid-template-areas:
+		"messages users"
+		"input users";
+
+	grid-template-columns:  auto 150px;
+	grid-template-rows:     auto 50px;
+	width:                  800px;
+	height:                 500px;
+
+	border:                 x.$border;
+	border-radius:          x.$border-radius;
+
+	font-family: x.$font-main;
+	font-size:   map-get(x.$font-sizes, "small");
+
+	&__chat-input {
+		grid-area: input;
+	}
+
+	&__message-list {
+		grid-area: messages;
+		padding:   map-get(x.$sizes, "medium");
+	}
+
+	&__user-list {
+		grid-area: users;
+		padding:   map-get(x.$sizes, "medium");
+	}
+}
+
+.chat-input {
+	display:   flex;
+	flex-flow: row nowrap;
+
+	&__field {
+		flex-grow:                 1;
+		padding:                   map-get(x.$sizes, "medium");
+		border:                    none;
+		border-top:                x.$border;
+		border-bottom-left-radius: x.$border-radius;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&__send-button {
+		flex-shrink:  0;
+		flex-basis:   map-get(x.$sizes, "large");
+		padding:      map-get(x.$sizes, "medium");
+
+		border:       x.$border;
+		border-right: none;
+	}
+}
+
+.message-list {
+	display:         flex;
+	flex-flow:       column nowrap;
+	list-style-type: none;
+
+	&__message {
+		display: flex;
+		flex-flow: row nowrap;
+	}
+}
+
+.message {
+	&__text {
+		flex-grow: 1;
+	}
+	&__username {
+		flex-basis: map-get(x.$sizes, "xlarge");
+		flex-shrink: 0;
+	}
+}
+
+.user-list {
+	display:         flex;
+	flex-flow:       column nowrap;
+	list-style-type: none;
+	border-left:     x.$border;
+
+	&__user {
+		padding: map-get(x.$sizes, "tiny");
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}

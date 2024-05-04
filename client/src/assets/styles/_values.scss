@@ -56,3 +56,4 @@ $transitions:   ( // @formatter:off
                 ); // @formatter:on
 
 $border: 1px solid map-get($colors, "border");
+$border-radius: map-get($sizes, "medium");
