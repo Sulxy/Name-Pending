@@ -1,21 +1,27 @@
-@use "values" as x; // Predefined values and settings
+@use "values" as x;
+// Predefined values and settings
+@use "icons";
+@use "mixins";
 
 .whispers {
+	@include mixins.borders(());
 	display:                grid;
 	grid-template-areas:
 		"messages users"
 		"input users";
 
 	grid-template-columns:  auto 150px;
-	grid-template-rows:     auto 50px;
+	grid-template-rows:     auto map-get(x.$sizes, "large");
 	width:                  800px;
 	height:                 500px;
+	overflow:               hidden;
 
-	border:                 x.$border;
+	align-self:             center;
+
 	border-radius:          x.$border-radius;
 	box-shadow:             map-get(x.$shadows, "large");
 
-	font-family:            x.$font-main;
+	font-family:            map-get(x.$fonts, "main");
 	font-size:              map-get(x.$font-sizes, "small");
 
 	&__chat-input {
@@ -39,10 +45,11 @@
 	flex-flow: row nowrap;
 
 	&__field {
+		@include mixins.borders((top), false);
+
 		flex-grow:                 1;
 		padding:                   map-get(x.$sizes, "medium");
-		border:                    none;
-		border-top:                x.$border;
+
 		border-bottom-left-radius: x.$border-radius;
 
 		&:focus {
@@ -51,20 +58,21 @@
 	}
 
 	&__send-button {
-		flex-shrink:  0;
-		flex-basis:   map-get(x.$sizes, "large");
-		padding:      map-get(x.$sizes, "medium");
+		@include icons.icon-button-transform("medium-large", "large");
+		@include mixins.borders((top), false);
 
-		border:       x.$border;
-		border-right: none;
+		flex-shrink:      0;
+		flex-basis:       map-get(x.$sizes, "large");
+
+		background-color: transparent;
 	}
 }
 
 .message-list {
-	display:         flex;
-	flex-flow:       column nowrap;
+	@include mixins.flex(column);
+
 	list-style-type: none;
-	overflow-y:      scroll;
+	overflow-y:      auto;
 
 	&__message {
 		display:   flex;
@@ -73,7 +81,6 @@
 }
 
 .message {
-
 	&__content {
 		flex-grow: 1;
 	}
@@ -90,10 +97,11 @@
 }
 
 .user-list {
-	display:         flex;
-	flex-flow:       column nowrap;
+	@include mixins.borders((left), false);
+	@include mixins.flex(column);
+
 	list-style-type: none;
-	border-left:     x.$border;
+	overflow-y:      auto;
 
 	&__user {
 		padding: map-get(x.$sizes, "tiny");

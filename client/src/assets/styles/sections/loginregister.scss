@@ -1,0 +1,29 @@
+@use "../mixins";
+// Predefined values and settings
+@use "../values" as x; // Predefined values and settings
+
+.login-form,
+.register-form {
+	@include mixins.flex("column");
+
+	gap: map-get(x.$sizes, "medium");
+}
+
+// TODO: Fix this, because this is going global
+.form {
+	&__label:not(&__label--checkbox) {width: map-get(x.$sizes, "xlarge");}
+
+	&__button {margin-left: auto;}
+
+	&__message {font-style: italic;}
+}
+
+.form__input--checkbox {margin-left: map-get(x.$sizes, "medium");}
+
+// Sizing
+.login-form {
+	width: 350px;
+
+	@include mixins.res(mobile) {align-self: center;}
+	@include mixins.res(tablet,desktop) {align-self: end;}
+}

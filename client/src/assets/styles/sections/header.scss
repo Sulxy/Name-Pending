@@ -5,7 +5,7 @@
 
 	&__title {
 		color: map-get(x.$colors, header-font);
-		font-family: x.$font-title;
+		font-family: map-get(x.$fonts, "title");
 		text-shadow: map-get(x.$shadows, "small");
 	}
 }

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { format } from 'date-fns';
 import { Helmet } from 'react-helmet';
 
-import {settings} from '../data/settings';
+import { settings } from '../config/settings';
 // Load CSS
 import '../assets/styles/whispers.scss';
 
@@ -36,7 +36,7 @@ function MessageList() {
 		<ul className="whispers__message-list message-list">
 			{messages.map(message => <Message key={message.id}
 			                                  {...message}
-			                                  timestamp={format(new Date(message.timestamp), settings.timeFormat)} />)}
+			                                  timestamp={format(new Date(message.timestamp), settings.timeFormat)}/>)}
 		</ul>
 	);
 }
@@ -58,8 +58,8 @@ function ChatInput({ onSendMessage }) {
 
 	return (
 		<form className="whispers__chat-input chat-input" onSubmit={handleSubmit}>
-			<input className="chat-input__field" value={inputText} onChange={e => setInputText(e.target.value)}/>
-			<button className="chat-input__send-button" type="submit">Send</button>
+			<textarea className="chat-input__field" value={inputText} onChange={e => setInputText(e.target.value)}/>
+			<button className="button icon chat-input__send-button" type="submit">send</button>
 		</form>
 	);
 }

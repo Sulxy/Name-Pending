@@ -1,5 +1,8 @@
 import { Helmet } from 'react-helmet';
 
+// Load CSS
+import '../assets/styles/sections/loginregister.scss';
+
 export default () => (
 	<>
 		<Helmet>
