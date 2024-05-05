@@ -1,5 +1,6 @@
-@use "values" as x;         // Predefined values and settings
 @use "reset";               // Reset
+@use "mixins";              // Mixins
+@use "values" as x;         // Predefined values and settings
 @use "sections/header";     // Page PageHeader
 @use "sections/content";    // Content
 @use "sections/form";       // Forms
@@ -11,14 +12,13 @@ body {
 
 #root,
 .content {
-	display:     flex;
-	flex-flow:   column nowrap;
-	align-items: center;
+	@include mixins.flex(column);
+	//align-items: center;
 }
 
 .content {
 	display:    flex;
-	max-width:  1024px;
+	//max-width:  1024px;
 	margin-top: x.$header-height;
 }
 

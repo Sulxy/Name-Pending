@@ -6,7 +6,7 @@
 	border-radius: map-get(x.$sizes, "small");
 	box-shadow: map-get(x.$shadows, "large");
 
-	font-family: x.$font-main;
+	font-family: map-get(x.$fonts, "main");
 
 	&__button,
 	&__input,

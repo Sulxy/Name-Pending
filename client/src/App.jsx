@@ -18,7 +18,7 @@ function App() {
 			<PageHeader/>
 
 			<Routes>
-				<Route path="/" component={Home}/>
+				<Route path="/" element={<Home/>}/>
 				<Route path="/user/*" element={<User/>}/>
 				<Route path="/whispers/*" element={<Whispers/>}/>
 			</Routes>
