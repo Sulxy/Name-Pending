@@ -17,7 +17,7 @@ module.exports = {
 
     res.json(foundUser);
   },
-  // create a user, sign a token, and send it back (to client/src/components/_____) ---> whatever the signup form is called. 
+  // create a user, sign a token, and send it back (to client/src/components/User-Register)
   async createUser({ body }, res) {
     const user = await User.create(body);
 
@@ -27,7 +27,7 @@ module.exports = {
     const token = signToken(user);
     res.json({ token, user });
   },
-  // login a user, sign a token, and send it back (to client/src/components/____) ---> whatever the login form is called.
+  // login a user, sign a token, and send it back (to client/src/components/User-Login)
   // {body} is destructured req.body
   async login({ body }, res) {
     try {
@@ -47,6 +47,16 @@ module.exports = {
     } catch (error) {
       console.error('Error during login:', error);
       return res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+  },
+  async logout (req, res) {
+    try {
+      // Clear the token from client-side storage (cookies or local storage)
+      res.clearCookie('jwt'); // For cookies
+      res.status(200).json({ success: true, message: 'Logout successful' });
+    } catch (error) {
+      console.error('Error during logout:', error);
+      res.status(500).json({ success: false, message: 'Internal server error' });
     }
   }
 };
