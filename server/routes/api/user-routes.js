@@ -8,6 +8,9 @@ router.route('/').post(createUser);
 // Route for user login
 router.route('/login').post(login);
 
+// Route for user logout
+router.route('/logout').get(logout); // Maybe should be .post(logout) instead of .get(logout)
+
 // Route for getting user profile
 router.route('/me').get(authMiddleware, getUserProfile); 
 
