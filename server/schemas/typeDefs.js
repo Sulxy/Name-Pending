@@ -11,6 +11,7 @@ const typeDefs = `
     message: String
     timestamp: Date
   }
+  
   type Query {
     users: [User]
     posts: [Post]
