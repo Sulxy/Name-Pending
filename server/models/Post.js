@@ -66,29 +66,29 @@ postSchema.pre('save', async function(next) {
 });
 
 // Async function to replace keywords with emojis using Open Emoji API
-async function replaceWithEmojis(message) {
-    try {
-        const response = await axios.get(process.env.OPEN_EMOJI_API_KEY, {
-            params: {
-                message
-            }
-        });
-        return response.data.emojifiedMessage;
-    } catch (error) {
-        console.error('Error replacing with emojis:', error);
-        return message; // Return original message if there's an error
-    }
-}
+// async function replaceWithEmojis(message) {
+//     try {
+//         const response = await axios.get(process.env.OPEN_EMOJI_API_KEY, {
+//             params: {
+//                 message
+//             }
+//         });
+//         return response.data.emojifiedMessage;
+//     } catch (error) {
+//         console.error('Error replacing with emojis:', error);
+//         return message; // Return original message if there's an error
+//     }
+// }
 
 // Add a pre-save hook to replace keywords with emojis before saving the post
-postSchema.pre('save', async function(next) {
-    try {
-        this.message = await replaceWithEmojis(this.message);
-        next();
-    } catch (error) {
-        next(error);
-    }
-});
+// postSchema.pre('save', async function(next) {
+//     try {
+//         this.message = await replaceWithEmojis(this.message);
+//         next();
+//     } catch (error) {
+//         next(error);
+//     }
+// });
 
 // Define a model for the chat messages
 const Post = model('Post', postSchema);
