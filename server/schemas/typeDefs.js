@@ -1,4 +1,6 @@
-const typeDefs = `
+const { gql } = require('apollo-server-express');
+
+const typeDefs = gql`
   type User {
     _id: ID
     username: String
@@ -10,12 +12,24 @@ const typeDefs = `
     _id: ID
     user: User
     message: String
-    timestamp: Date
+    timestamp: String
   }
 
   type Attachment {
-    id: ID!
+    _id: ID!
     posts: [Post!]!
+  }
+
+  input UserInput {
+    username: String
+    email: String
+    password: String
+  }
+
+  input PostInput {
+    user: ID!
+    message: String
+    timestamp: String
   }
 
   type Query {
@@ -30,17 +44,6 @@ const typeDefs = `
     createPost(input: PostInput): Post
     updatePost(id: ID!, input: PostInput): Post
     deletePost(id: ID!): Post
-
-  input UserInput {
-    username: String
-    email: String
-    password: String
-  }
-
-  input PostInput {
-    user: ID!
-    message: String
-    timestamp: Date
   }
 `;
 
