@@ -21,9 +21,15 @@
 .form__input--checkbox {margin-left: map-get(x.$sizes, "medium");}
 
 // Sizing
-.login-form {
-	width: 350px;
+.login-form {width: 350px;}
 
+.register-form {width: 400px;}
+
+.login-form,
+.register-form {
 	@include mixins.res(mobile) {align-self: center;}
-	@include mixins.res(tablet,desktop) {align-self: end;}
+	@include mixins.res(tablet, desktop) {
+		align-self: end;
+		margin-right: map-get(x.$sizes, "medium-large");
+	}
 }
