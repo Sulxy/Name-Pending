@@ -1,27 +1,33 @@
-@use "reset";               // Reset
-@use "mixins";              // Mixins
-@use "values" as x;         // Predefined values and settings
-@use "sections/header";     // Page PageHeader
-@use "sections/content";    // Content
-@use "sections/form";       // Forms
-@use "sections/footer";     // Page PageFooter
+@use "reset";
+@use "mixins";
+@use "values" as x;
+@use "sections/header";
+@use "sections/content";
+@use "sections/form";
+@use "sections/footer";
 
 body {
 	font-size: 88%;
 }
 
-#root,
+#root {
+	@include mixins.flex(column);
+	min-height: 100vh;
+
+}
 .content {
 	@include mixins.flex(column);
 	//align-items: center;
+	min-height: 100%;
+	flex-grow: 1;
 }
 
 .content {
-	display:    flex;
 	//max-width:  1024px;
 	margin-top: x.$header-height;
 }
 
 .link {
+	color: blue;
 	text-decoration: none;
 }

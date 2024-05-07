@@ -5,6 +5,7 @@
 	flex-flow:       column nowrap;
 	align-items:     center;
 	justify-content: center;
+	margin-top: auto;
 	padding:         map-get(x.$sizes, "xlarge");
 
 	color:           map-get(x.$colors, header-font);
