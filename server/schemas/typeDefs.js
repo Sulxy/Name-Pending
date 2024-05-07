@@ -7,9 +7,15 @@ const typeDefs = `
   }
 
   type Post {
+    _id: ID
     user: User
     message: String
     timestamp: Date
+  }
+
+  type Attachment {
+    id: ID!
+    posts: [Post!]!
   }
 
   type Query {
