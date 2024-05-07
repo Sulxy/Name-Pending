@@ -1,23 +1,20 @@
 // User.jsx
-import React from 'react';
-import { UserLogin } from '../components';
+import React, { useState, createContext } from 'react';
+import { UserLogin, UserRegister } from '../components';
 
 // Load CSS
 import '../assets/styles/home.scss';
 
+export const AppContext = createContext();
+
 export default () => {
+	const [isLogin, setIsLogin] = useState(true);
+
 	return (
-		<main className='content home'>
-			<UserLogin/>
-			<section className='test test1'>
-				Test
-			</section>
-			<section className='test test2'>
-				Test
-			</section>
-			<section className='test test3'>
-				Test
-			</section>
+		<main className="content home">
+			<AppContext.Provider value={{ isLogin, setIsLogin }}>
+				{isLogin ? <UserLogin/> : <UserRegister/>}
+			</AppContext.Provider>
 		</main>
 	);
 }
