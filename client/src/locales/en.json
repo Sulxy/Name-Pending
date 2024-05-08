@@ -1,0 +1,39 @@
+{
+	"languages": {
+		"aria": {
+			"de": "German",
+			"en": "English",
+			"es": "Spanish",
+			"fr": "French"
+		}
+	},
+	"login":      {
+		"pageTitle": "Login",
+		"formTitle": "Login",
+		"linkText":  "Register",
+		"button":    "Login",
+		"checkbox":  "Stay logged in",
+		"username":  "Username",
+		"password":  "Password"
+	},
+	"register":   {
+		"pageTitle":   "Register",
+		"formTitle":   "Register",
+		"linkText":    "Login",
+		"button":      "Register",
+		"name":        "Full Name",
+		"email":       "Email",
+		"username":    "Username",
+		"password":    "Password",
+		"passConfirm": "Confirm",
+		"coppa":       "I agree that I am at least 13 years old",
+		"terms":       "I agree to the Terms and Conditions"
+	},
+	"pageFooter": {
+		"authors": "Designed and coded by #Ctrl-Alt-Defeat (Danny Sanchez, Joshua Hale, Ray Beliveau)",
+		"links":   {
+			"privacy": "Privacy Policy",
+			"tos":     "Terms of Service"
+		}
+	}
+}

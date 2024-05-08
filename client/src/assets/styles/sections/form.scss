@@ -14,14 +14,16 @@
 	&__label {
 		padding: map-get(x.$sizes, "small");
 	}
-
-	&__message {}
-
 	&__header {
 		@include mixins.flex($justify: space-between, $align: center);
 	}
-
 	&__row {
 		@include mixins.flex();
 	}
+	&__title {
+		font-size: map-get(x.$font-sizes, "medium-large");
+	}
+
+	&__message {}
+
 }
