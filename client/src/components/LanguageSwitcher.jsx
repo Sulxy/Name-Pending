@@ -18,7 +18,6 @@ export default () => {
 	return (
 		<div className="languages">
 			{/* Loop through the language map */}
-			// Map each language to a span element. Clicking on the span changes the language and loads the new locale
 			{Object.entries(settings.locale.list).map(([key, flag]) => (
 				<span
 					onClick={() => handleLanguageChange(key)}
