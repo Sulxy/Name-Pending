@@ -7,14 +7,12 @@ const SECRET_KEY = process.env.JWT_SECRET;
 
 const resolvers = {
   Query: {
-    Query: {
-      users: async () => {
-        return await User.find({}).populate('posts'); // Populate the posts field for each user
-      },
-      posts: async () => {
-        return await Post.find({});
-      }
+    users: async () => {
+      return await User.find({}).populate('posts'); // Populate the posts field for each user
     },
+    posts: async () => {
+      return await Post.find({});
+    }
   },
   Mutation: {
     createUser: async (_, { input }) => {
@@ -49,32 +47,36 @@ const resolvers = {
         throw new Error(`Failed to create user: ${error.message}`);
       }
     },
-    deleteUser: async (_, { userId }, context) => {
+    deleteUser: async (_, { id }, context) => {
       try {
         // Check if the user is authenticated
         if (!context.user) {
           throw new AuthenticationError('Authentication required');
         }
-
+    
         // Check if the authenticated user is the same as the user being deleted
-        if (context.user.userId !== userId) {
+        if (context.user._id !== id) {
           throw new Error('Unauthorized: You can only delete your own account');
         }
-
+    
         // Delete the user
-        const deletedUser = await User.findByIdAndDelete(userId);
-
+        const deletedUser = await User.findByIdAndDelete(id);
+    
         if (!deletedUser) {
           throw new Error('User not found');
         }
-
+    
         return {
+          success: true,
           message: 'User deleted successfully'
         };
       } catch (error) {
-        throw new Error(`Failed to delete user: ${error.message}`);
+        return {
+          success: false,
+          message: `Failed to delete user: ${error.message}`
+        };
       }
-    },
+    },    
     login: async (_, { email, password }) => {
       try {
         // Find the user by email
