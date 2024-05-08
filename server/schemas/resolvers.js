@@ -7,15 +7,14 @@ const SECRET_KEY = process.env.JWT_SECRET;
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return await User.find({}).populate('post').populate({
-        path: 'post',
-        populate: 'attachment'
-      });
+    Query: {
+      users: async () => {
+        return await User.find({}).populate('posts'); // Populate the posts field for each user
+      },
+      posts: async () => {
+        return await Post.find({});
+      }
     },
-    posts: async () => {
-      return await Post.find({}).populate('attachment');
-    }
   },
   Mutation: {
     createUser: async (_, { input }) => {
@@ -100,7 +99,12 @@ const resolvers = {
         throw new AuthenticationError(`Login failed: ${error.message}`);
       }
     }
-  }
+  },
+  User: {
+    posts: async (parent) => {
+      return await Post.find({ user: parent._id });
+    }
+  },
 };
 
 module.exports = resolvers;
