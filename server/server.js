@@ -4,10 +4,12 @@ const path = require('path');
 const { expressMiddleware } = require('@apollo/server/express4');
 const db = require('./config/connection');
 const { typeDefs, resolvers } = require('./schemas');
+const { authMiddleware } = require('./utils/auth'); // Import authMiddleware from utils/auth.js
 
 // Set up port and create a new instance of an Express server
 const PORT = process.env.PORT || 3001;
 const app = express();
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -17,7 +19,7 @@ const server = new ApolloServer({
     let user = null;
     try {
       if (token) {
-        user = jwt.verify(token, SECRET_KEY);
+        user = authMiddleware({ context: { token } }); // Use authMiddleware to decode token
         console.log("Decoded user:", user); // Logs the decoded user to the console -- having issues w/ deleting a user.
       }
     } catch (error) {
@@ -27,11 +29,11 @@ const server = new ApolloServer({
   },
 });
 
-
 // Start Apollo Server
 const startApolloServer = async () => {
   await server.start();
-// Middleware for parsing requests
+
+  // Middleware for parsing requests
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
