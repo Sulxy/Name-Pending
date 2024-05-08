@@ -7,10 +7,9 @@ import { useTranslation } from 'react-i18next';
 import '../config/i18n';
 
 // Load CSS
-import '../assets/styles/sections/loginregister.scss';
+import '../assets/styles/sections/settings.scss';
 
 export default () => {
-	const { setIsLogin }    = useContext(AppContext);
 	const [error, setError] = useState('');
 	const { t }             = useTranslation(); // For translations
 
@@ -22,9 +21,9 @@ export default () => {
 	return (
 		<>
 			<Helmet>
-				<title>{t('register.page.title')}</title>
+				<title>{t('register.pageTitle')}</title>
 				<meta name="description"
-				      content={t('register.page.description')}/>
+				      content="Create a new account on our site. Enter your personal information and secure your profile."/>
 			</Helmet>
 
 			<form className="form register-form" onSubmit={handleFormSubmit}>
