@@ -12,7 +12,7 @@ export async function loadLocale(locale = settings.locale) {
 		i18n.addResourceBundle(locale, 'translation', module.default);
 	} catch (error) {
 		// If initial locale load failed, try to load the default language from settings.
-		if (locale !== settings.locale) await loadLocale(settings.locale);
+		if (locale !== settings.locale.default) await loadLocale(settings.locale.default);
 		else console.error('Error loading English language file:', error);
 	}
 
@@ -34,4 +34,4 @@ export default i18n
 	      });
 
 // Load initial language translations.
-await loadLocale(i18n.language);
+(async () => await loadLocale(i18n.language))();

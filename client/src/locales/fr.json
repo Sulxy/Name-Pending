@@ -1,0 +1,39 @@
+{
+	"languages": {
+		"aria": {
+			"de": "allemand",
+			"en": "anglais",
+			"es": "espagnol",
+			"fr": "français"
+		}
+	},
+	"login":      {
+		"pageTitle": "Login",
+		"formTitle": "Login",
+		"linkText":  "Register",
+		"button":    "Login",
+		"checkbox":  "Rester connecté",
+		"username":  "Nom d'utilisateur",
+		"password":  "Mot de passe"
+	},
+	"register":   {
+		"pageTitle":   "Register",
+		"formTitle":   "Register",
+		"linkText":    "Login",
+		"button":      "Register",
+		"name":        "Nom complet",
+		"email":       "Email",
+		"username":    "Nom d'utilisateur",
+		"password":    "Mot de passe",
+		"passConfirm": "Confirm",
+		"coppa":       "Je reconnais avoir au moins 13 ans",
+		"terms":       "J'accepte les conditions générales"
+	},
+	"pageFooter": {
+		"authors": "Conçu et codé par #Ctrl-Alt-Defeat (Danny Sanchez, Joshua Hale, Ray Beliveau)",
+		"links":   {
+			"privacy": "Politique de confidentialité",
+			"tos":     "Conditions d'utilisation"
+		}
+	}
+}

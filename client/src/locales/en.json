@@ -1,4 +1,12 @@
 {
+	"languages": {
+		"aria": {
+			"de": "German",
+			"en": "English",
+			"es": "Spanish",
+			"fr": "French"
+		}
+	},
 	"login":      {
 		"pageTitle": "Login",
 		"formTitle": "Login",

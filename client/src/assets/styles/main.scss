@@ -31,3 +31,13 @@ body {
 	color: blue;
 	text-decoration: none;
 }
+
+.languages {
+	@include mixins.flex();
+	gap: map-get(x.$sizes, "small");
+
+	&__flag {
+		display: inline-block;
+		cursor: pointer;
+	}
+}
