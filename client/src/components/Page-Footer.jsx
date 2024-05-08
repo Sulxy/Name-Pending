@@ -11,18 +11,18 @@ export default function PageFooter() {
 				<ul className="page-footer__list">
 					<li className="page-footer__item">
 						<NavLink to="/privacy-policy" className="link page-footer__link">
-							{t('pageFooter.links.privacy')}
+							{t('page.footer.links.privacy')}
 						</NavLink>
 					</li>
 					<li className="page-footer__item">
 						<NavLink to="/terms-of-service" className="link page-footer__link">
-							{t('pageFooter.links.tos')}
+							{t('page.footer.links.tos')}
 						</NavLink>
 					</li>
 				</ul>
 			</nav>
 			<p className="page-footer__text">
-				{t('pageFooter.authors')}
+				{t('page.footer.authors')}
 			</p>
 		</footer>
 	);

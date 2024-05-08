@@ -24,9 +24,9 @@ export default () => {
 	return (
 		<>
 			<Helmet>
-				<title>{t('login.pageTitle')}</title>
+				<title>{t('login.page.title')}</title>
 				<meta name="description"
-				      content="Secure user login page for Whisper. Enter your username and password to access your account and manage your profile settings."/>
+				      content={t('login.page.description')}/>
 			</Helmet>
 
 			<form className="form login-form" onSubmit={handleFormSubmit}>

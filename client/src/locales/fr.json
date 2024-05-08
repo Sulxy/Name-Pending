@@ -1,5 +1,14 @@
 {
-	"languages": {
+	"page": {
+		"footer": {
+			"authors": "Conçu et codé par #Ctrl-Alt-Defeat (Danny Sanchez, Joshua Hale, Ray Beliveau)",
+			"links":   {
+				"privacy": "Politique de confidentialité",
+				"tos":     "Conditions d'utilisation"
+			}
+		}
+	},
+	"languages":  {
 		"aria": {
 			"de": "allemand",
 			"en": "anglais",
@@ -8,32 +17,37 @@
 		}
 	},
 	"login":      {
-		"pageTitle": "Login",
-		"formTitle": "Login",
-		"linkText":  "Register",
-		"button":    "Login",
+		"page":      {
+			"title":       "Se connecter",
+			"description": ""
+		},
+		"formTitle": "Se connecter",
+		"linkText":  "S'inscrire",
+		"button":    "Se connecter",
 		"checkbox":  "Rester connecté",
 		"username":  "Nom d'utilisateur",
 		"password":  "Mot de passe"
 	},
 	"register":   {
-		"pageTitle":   "Register",
-		"formTitle":   "Register",
-		"linkText":    "Login",
-		"button":      "Register",
+		"page": {
+			"title":   "S'inscrire",
+			"description": ""
+		},
+		"formTitle":   "S'inscrire",
+		"linkText":    "Se connecter",
+		"button":      "S'inscrire",
 		"name":        "Nom complet",
 		"email":       "Email",
 		"username":    "Nom d'utilisateur",
 		"password":    "Mot de passe",
-		"passConfirm": "Confirm",
+		"passConfirm": "Confirmer",
 		"coppa":       "Je reconnais avoir au moins 13 ans",
 		"terms":       "J'accepte les conditions générales"
 	},
-	"pageFooter": {
-		"authors": "Conçu et codé par #Ctrl-Alt-Defeat (Danny Sanchez, Joshua Hale, Ray Beliveau)",
-		"links":   {
-			"privacy": "Politique de confidentialité",
-			"tos":     "Conditions d'utilisation"
+	"settings":   {
+		"page": {
+			"title":       "",
+			"description": ""
 		}
 	}
 }
