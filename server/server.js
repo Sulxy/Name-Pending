@@ -13,9 +13,20 @@ const server = new ApolloServer({
   resolvers,
   context: ({ req }) => {
     const token = req.headers.authorization || '';
-    return { token };
+    console.log("Token:", token); // Logs the token to the console -- having issues w/ deleting a user. 
+    let user = null;
+    try {
+      if (token) {
+        user = jwt.verify(token, SECRET_KEY);
+        console.log("Decoded user:", user); // Logs the decoded user to the console -- having issues w/ deleting a user.
+      }
+    } catch (error) {
+      console.log("Invalid token");
+    }
+    return { user };
   },
 });
+
 
 // Start Apollo Server
 const startApolloServer = async () => {
