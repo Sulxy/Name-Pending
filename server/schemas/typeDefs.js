@@ -6,11 +6,12 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    posts: [Post]
+    posts: [Post]!
   }
 
   type AuthToken {
-    token: String
+    token: ID!
+    user: User
   }
 
   type Post {
@@ -18,11 +19,6 @@ const typeDefs = gql`
     user: User
     message: String
     timestamp: String
-  }
-
-  type Attachment {
-    _id: ID!
-    posts: [Post!]!
   }
 
   input UserInput {
@@ -43,18 +39,19 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createUser(input: UserInput): User
-    updateUser(id: ID!, input: UserInput): User
-    deleteUser(id: ID!): UserDeleteResponse
-    getUserProfile: User
+    createUser(username: String!, email: String!, password: String!): AuthToken
     login(email: String!, password: String!): AuthToken
-    logout: Boolean
-    createPost(input: PostInput): Post
-    updatePost(id: ID!, input: PostInput): Post
-    deletePost(id: ID!): Post
+    createPost(input: PostInput!): Post
+    deleteUser(id: ID!): UserDeleteResponse
+    deletePost(id: ID!): PostDeleteResponse
   }
 
   type UserDeleteResponse {
+    success: Boolean
+    message: String
+  }
+
+  type PostDeleteResponse {
     success: Boolean
     message: String
   }
