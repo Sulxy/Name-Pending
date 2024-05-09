@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import { Helmet } from 'react-helmet';
 import { useState } from 'react';
-import client from './ApolloClient'; // Path to the ApolloClient depends on where you place the file.
+import client from './config/ApolloClient';
 
 // Import Components.
 import { PageFooter, PageHeader } from './components';
