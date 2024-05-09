@@ -20,9 +20,16 @@ export default () => {
 	// const { handleFormSubmit } = useHandleFormSubmit();
 	const { t }                = useTranslation(); // For translations
 
-	const handleFormSubmit = (e) => {
+	const [formState, setFormState] = useState({
+		name: '',
+		email: '',
+		password: '',
+	  });
+
+	const handleFormSubmit = async (e) => {
 		e.preventDefault();
 		// TODO: Add Code Here
+		console.log(formState);
 	};
 
 	return (
