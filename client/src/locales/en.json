@@ -1,4 +1,13 @@
 {
+	"page": {
+		"footer": {
+			"authors": "Designed and coded by #Ctrl-Alt-Defeat (Danny Sanchez, Joshua Hale, Ray Beliveau)",
+			"links":   {
+				"privacy": "Privacy Policy",
+				"tos":     "Terms of Service"
+			}
+		}
+	},
 	"languages":  {
 		"aria": {
 			"de": "German",
@@ -18,13 +27,6 @@
 		"checkbox":  "Stay logged in",
 		"username":  "Username",
 		"password":  "Password"
-	},
-	"pageFooter": {
-		"authors": "Designed and coded by #Ctrl-Alt-Defeat (Danny Sanchez, Joshua Hale, Ray Beliveau)",
-		"links":   {
-			"privacy": "Privacy Policy",
-			"tos":     "Terms of Service"
-		}
 	},
 	"register":   {
 		"page":        {
@@ -46,6 +48,9 @@
 		"page": {
 			"title":       "Settings",
 			"description": ""
+		},
+		"form": {
+			"theme": "Theme"
 		}
 	}
 }

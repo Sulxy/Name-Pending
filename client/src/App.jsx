@@ -1,30 +1,36 @@
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/client';
 import { Helmet } from 'react-helmet';
 import { useState } from 'react';
-// Import Components
+import client from './ApolloClient'; // Path to the ApolloClient depends on where you place the file.
+
+// Import Components.
 import { PageFooter, PageHeader } from './components';
 import { Home, User, Whispers } from './pages';
 
-// Load CSS
+// Load CSS.
 import './assets/styles/main.scss';
 
 function App() {
 	const [count, setCount] = useState(0);
 
 	return (
-		<Router>
-			<Helmet defaultTitle="Home"
-			        titleTemplate="%s | Whisper"/>
-			<PageHeader/>
+		<ApolloProvider client={client}>
+			<Router>
+				<Helmet defaultTitle="Home"
+				        titleTemplate="%s | Whisper"/>
+				<PageHeader/>
 
-			<Routes>
-				<Route path="/" element={<Home/>}/>
-				<Route path="/user/*" element={<User/>}/>
-				<Route path="/whispers/*" element={<Whispers/>}/>
-			</Routes>
+				<Routes>
+					<Route path="/" element={<Home/>}/>
+					<Route path="/user/*" element={<User/>}/>
+					<Route path="/whispers/*" element={<Whispers/>}/>
+				</Routes>
 
-			<PageFooter/>
-		</Router>
+				<PageFooter/>
+			</Router>
+		</ApolloProvider>
 	);
 }
 
