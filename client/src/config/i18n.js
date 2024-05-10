@@ -24,8 +24,8 @@ export async function loadLocale(locale = settings.locale) {
 export default i18n
 	.use(initReactI18next)
 	.init({
-		      lng:           'en',
-		      fallbackLng:   'en',
+		      lng:           settings.locale.default,
+		      fallbackLng:   settings.locale.default,
 		      interpolation: {
 			      escapeValue: false,
 		      },
