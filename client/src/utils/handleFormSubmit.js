@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { useHistory } from 'react-router-dom'; // Import useHistory from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'; // Import useHistory from 'react-router-dom'
 
 // Creating a new user
 import { CREATE_USER } from './mutations';
 
 const useHandleFormSubmit = () => {
     const [error, setError] = useState('');
-    const history = useHistory(); // Initialize useHistory hook
+    const history = useNavigate(); // Initialize useHistory hook
     const [registerUser, { loading, error: mutationError }] = useMutation(CREATE_USER);
 
     const handleFormSubmit = async (userData) => {
