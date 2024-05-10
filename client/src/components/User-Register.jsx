@@ -1,11 +1,8 @@
-// THIS FILE WITH THE CURRENT COMMENTED OUT CODE IS THE SAME AS THE FILE IN THE REPO
-// IF YOU COMMENT OUT LINES 23-26, AND LINE 36, THEN UNCOMMENT LINES 8, 20, AND 37, YOU WILL SEE THE ERROR I AM HAVING WITH THE WHITE SCREEN.
-
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../pages/Home';
-// import useHandleFormSubmit from '../utils/handleFormSubmit';
+import useHandleFormSubmit from '../utils/handleFormSubmit';
 
 // Load language translations
 import { useTranslation } from 'react-i18next';
@@ -17,20 +14,8 @@ import '../assets/styles/sections/loginregister.scss';
 export default () => {
 	const { setIsLogin }       = useContext(AppContext);
 	const [error, setError]    = useState('');
-	// const { handleFormSubmit } = useHandleFormSubmit();
+	const { handleFormSubmit } = useHandleFormSubmit();
 	const { t }                = useTranslation(); // For translations
-
-	const [formState, setFormState] = useState({
-		name: '',
-		email: '',
-		password: '',
-	  });
-
-	const handleFormSubmit = async (e) => {
-		e.preventDefault();
-		// TODO: Add Code Here
-		console.log(formState);
-	};
 
 	return (
 		<>
@@ -40,8 +25,7 @@ export default () => {
 				      content={t('register.page.description')}/>
 			</Helmet>
 
-			<form className="form register-form" onSubmit={handleFormSubmit}>
-			{/* <form className="form register-form" onSubmit={(e) => handleFormSubmit(e)}> */}
+			<form className="form register-form" onSubmit={(e) => handleFormSubmit(e)}>
 				<header className="form__header">
 					<h2 className="form__title">{t('register.formTitle')}</h2>
 					<Link className="link form__link" onClick={() => setIsLogin(true)} to="#">
