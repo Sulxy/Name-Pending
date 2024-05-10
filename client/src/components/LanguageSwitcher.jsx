@@ -1,5 +1,4 @@
 import React from 'react';
-import { loadLocale } from '../config/i18n';
 import { settings } from '../config/settings';
 import { useTranslation } from 'react-i18next';
 
@@ -12,7 +11,6 @@ export default () => {
 		// Change language in the i18next instance
 		await i18n.changeLanguage(language);
 		// Load the new locale after language has been changed
-		await loadLocale(language);
 	};
 
 	return (
