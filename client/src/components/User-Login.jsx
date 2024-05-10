@@ -78,7 +78,7 @@ export default function LoginPage(){
 					       htmlFor="checkbox">{t('login.checkbox')}</label>
 					<button className="form__button form__button--submit" type="submit">{t('login.button')}</button>
 				</div>
-				{/* <div className="form__message form__message--error">{err}</div> */}
+				<div className="form__message form__message--error">{err}</div>
 			</form>
 		</>
 	);
