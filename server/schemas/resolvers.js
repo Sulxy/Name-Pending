@@ -1,5 +1,6 @@
 const { User, Post, Attachment } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const { GraphQLScalarType, Kind } = require('graphql');
 
 const resolvers = {
   Query: {
@@ -34,8 +35,8 @@ const resolvers = {
     }
   },
   Mutation: {
-    createUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    createUser: async (parent, { username, email, password, preferences }) => {
+      const user = await User.create({ username, email, password, preferences });
       const token = signToken(user);
       return { token, user };
     },
@@ -93,7 +94,31 @@ const resolvers = {
         throw new Error(`Failed to delete user: ${error.message}`);
       }
     }
-  }
+  },
+  JSON: new GraphQLScalarType({  // Custom resolver for JSON scalar type
+    name: 'JSON',
+    description: 'The `JSON` scalar type represents JSON objects as a string.',
+    serialize(value) {
+      return JSON.stringify(value);
+    },
+    parseValue(value) {
+      try {
+        return JSON.parse(value);
+      } catch (error) {
+        throw new Error('Invalid JSON string.');
+      }
+    },
+    parseLiteral(ast) {
+      if (ast.kind === Kind.STRING) {
+        try {
+          return JSON.parse(ast.value);
+        } catch (error) {
+          throw new Error('Invalid JSON string.');
+        }
+      }
+      throw new Error('JSON value must be a string.');
+    },
+  }),
 };
 
 module.exports = resolvers;
