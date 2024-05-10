@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 // set token secret and expiration date
 const secret = process.env.JWT_SECRET || 'mysecretsshhhhh';
-const expiration = '2h';
+const expiration = '7d';
 
 // Copied from Week 21 - Activity 24_Stu_Decode-JWT
 module.exports = {

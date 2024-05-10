@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import Auth from '../utils/auth';
 import { LOGIN_USER } from '../utils/queries';
 import '../config/i18n';
+import { useNavigate } from 'react-router-dom';
 
 // Load CSS
 import '../assets/styles/sections/loginregister.scss';
@@ -18,6 +19,7 @@ export default function LoginPage(){
 	const [err, setError] = useState('');
 	const [login, { error, data }] = useLazyQuery(LOGIN_USER);
 	const { t } = useTranslation(); // For translations
+	const navigate = useNavigate(); // Initialize useNavigate hook
 	const handleChange = (event) => {
 		const { name, value } = event.target;
 	
@@ -30,21 +32,28 @@ export default function LoginPage(){
 	// submit form
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
-		console.log(formState)
 		try {
-			const { data } = await login({
-			  variables: { ...formState },
-			});
-			Auth.login(data.login.token);
-		} catch (e) {
-			console.error(e);
-		}
-		// clear form values
-		setFormState({
-			username: '',
-			password: '',
+		  const { data } = await login({
+			variables: {
+			  username: formState.username,
+			  password: formState.password,
+			},
 		  });
-	};
+		  if (data && data.login && data.login.token) {
+			Auth.login(data.login.token);
+			navigate('/whispers'); // Redirect to whispers page
+		  } else {
+			setError('Invalid credentials');
+		  }
+		} catch (error) {
+		  console.error(error);
+		  setError('An error occurred during login');
+		}
+		setFormState({
+		  username: '',
+		  password: '',
+		});
+	  };
 	
 	return (
 		<>
