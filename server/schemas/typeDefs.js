@@ -41,13 +41,14 @@ const typeDefs = gql`
   type Query {
     users: [User]
     posts: [Post]
+    login(username: String!, password: String!): AuthToken
     attachments: [Attachment]
     getAttachment(id: ID!): Attachment
   }
 
   type Mutation {
     createUser(username: String!, email: String!, password: String!): AuthToken
-    login(username: String!, password: String!): AuthToken
+    
     createPost(input: PostInput!): Post
     deleteUser(id: ID!): UserDeleteResponse
     deletePost(id: ID!): PostDeleteResponse

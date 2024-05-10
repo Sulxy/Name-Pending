@@ -9,19 +9,6 @@ const resolvers = {
     posts: async () => {
       return await Post.find({}).limit(2000);
     },
-    attachments: async () => {
-      return await Attachment.find();
-    },
-    getAttachment: async (_, { id }) => {
-      return await Attachment.findById(id);
-    }
-  },
-  Mutation: {
-    createUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
-      const token = signToken(user);
-      return { token, user };
-    },
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
 
@@ -37,6 +24,19 @@ const resolvers = {
 
       const token = signToken(user);
 
+      return { token, user };
+    },
+    attachments: async () => {
+      return await Attachment.find();
+    },
+    getAttachment: async (_, { id }) => {
+      return await Attachment.findById(id);
+    }
+  },
+  Mutation: {
+    createUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
       return { token, user };
     },
     createPost: async (_, { input }) => {

@@ -7,7 +7,7 @@ import '../assets/styles/home.scss';
 
 export const AppContext = createContext();
 
-export default () => {
+export default function Home() {
 	const [isLogin, setIsLogin] = useState(true);
 
 	return (
