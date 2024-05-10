@@ -24,8 +24,12 @@ const userSchema = new Schema(
         ref: 'Post',
       },
     ],
+    preferences: {
+      type: Schema.Types.Mixed, // Store preferences as a JSON object
+      default: {}, // Default value is an empty object
+    },
   },
-  // set this to use virtual below
+  // set this to use virtual 
   {
     toJSON: {
       virtuals: true,
