@@ -21,6 +21,11 @@ const typeDefs = gql`
     timestamp: String
   }
 
+  type Attachment {
+    _id: ID
+    posts: [Post]
+  }
+
   input UserInput {
     username: String
     email: String
@@ -36,6 +41,8 @@ const typeDefs = gql`
   type Query {
     users: [User]
     posts: [Post]
+    attachments: [Attachment]
+    getAttachment(id: ID!): Attachment
   }
 
   type Mutation {
