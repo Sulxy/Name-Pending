@@ -1,4 +1,5 @@
 // // Copied from Week 21 - Activity 24_Stu_Decode-JWT
+const cors = require('cors');
 const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
@@ -19,9 +20,10 @@ const server = new ApolloServer({
 const startApolloServer = async () => {
   await server.start();
 
-  app.use(express.urlencoded({ extended: false }));
+  app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
 
+  app.use(cors('*'));
   app.use('/graphql', expressMiddleware(server, {
     context: authMiddleware
   }));
