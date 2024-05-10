@@ -1,4 +1,4 @@
-@use "../values" as x;         // Predefined values and settings
+@use "../includes/values" as x;         // Predefined values and settings
 
 .page-header {
 	padding: map-get(x.$sizes, "large");

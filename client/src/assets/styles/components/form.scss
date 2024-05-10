@@ -1,5 +1,5 @@
-@use "../mixins";
-@use "../values" as x; // Predefined values and settings
+@use "../includes/mixins";
+@use "../includes/values" as x; // Predefined values and settings
 
 .form {
 	padding:       map-get(x.$sizes, "large");

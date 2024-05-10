@@ -1,6 +1,6 @@
-@use "../mixins";
+@use "../includes/mixins";
 // Predefined values and settings
-@use "../values" as x; // Predefined values and settings
+@use "../includes/values" as x; // Predefined values and settings
 
 .login-form,
 .register-form {

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import '../config/i18n';
 
 // Load CSS
-import '../assets/styles/sections/settings.scss';
+import '../assets/styles/components/settings.scss';
 
 export default () => {
 	const [error, setError] = useState('');

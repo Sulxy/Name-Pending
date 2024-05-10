@@ -1,10 +1,10 @@
-@use "reset";
-@use "mixins";
-@use "values" as x;
-@use "sections/header";
-@use "sections/content";
-@use "sections/form";
-@use "sections/footer";
+@use "./includes/reset";
+@use "./includes/mixins";
+@use "./includes/values" as x;
+@use "components/header";
+@use "components/content";
+@use "components/form";
+@use "components/footer";
 
 body {
 	font-size: 88%;

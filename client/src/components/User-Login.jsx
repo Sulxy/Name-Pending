@@ -1,60 +1,61 @@
+// React Components
 import React, { useContext, useState } from 'react';
-import { useLazyQuery } from '@apollo/client';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import { AppContext } from '../pages/Home';
-// Load language translations
+import { useNavigate } from 'react-router-dom';
+import { useLazyQuery } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
+
+import '../config/i18n';
+import { AppContext } from '../pages/Home';
 import Auth from '../utils/auth';
 import { LOGIN_USER } from '../utils/queries';
-import '../config/i18n';
-import { useNavigate } from 'react-router-dom';
 
 // Load CSS
-import '../assets/styles/sections/loginregister.scss';
+import '../assets/styles/components/loginregister.scss';
 
-export default function LoginPage(){
-	const { setIsLogin } = useContext(AppContext);
+export default function LoginPage() {
+	const { setIsLogin }            = useContext(AppContext);
 	const [formState, setFormState] = useState({ username: '', password: '' });
-	const [err, setError] = useState('');
-	const [login, { error, data }] = useLazyQuery(LOGIN_USER);
-	const { t } = useTranslation(); // For translations
-	const navigate = useNavigate(); // Initialize useNavigate hook
-	const handleChange = (event) => {
+	const [err, setError]           = useState('');
+	const [login, { error, data }]  = useLazyQuery(LOGIN_USER);
+	const { t }                     = useTranslation(); // For translations
+	const navigate                  = useNavigate(); // Initialize useNavigate hook
+	const handleChange              = (event) => {
 		const { name, value } = event.target;
-	
+
 		setFormState({
-		  ...formState,
-		  [name]: value,
-		});
-	  };
+			             ...formState,
+			             [name]: value
+		             });
+	};
 	// console.log(login(), data);
 	// submit form
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
 		try {
-		  const { data } = await login({
-			variables: {
-			  username: formState.username,
-			  password: formState.password,
-			},
-		  });
-		  if (data && data.login && data.login.token) {
-			Auth.login(data.login.token);
-			navigate('/whispers'); // Redirect to whispers page
-		  } else {
-			setError('Invalid credentials');
-		  }
+			const { data } = await login({
+				                             variables: {
+					                             username: formState.username,
+					                             password: formState.password
+				                             }
+			                             });
+			if (data && data.login && data.login.token) {
+				Auth.login(data.login.token);
+				navigate('/whispers'); // Redirect to whispers page
+			} else {
+				setError('Invalid credentials');
+			}
 		} catch (error) {
-		  console.error(error);
-		  setError('An error occurred during login');
+			console.error(error);
+			setError('An error occurred during login');
 		}
 		setFormState({
-		  username: '',
-		  password: '',
-		});
-	  };
-	
+			             username: '',
+			             password: ''
+		             });
+	};
+
 	return (
 		<>
 			<Helmet>
@@ -72,13 +73,15 @@ export default function LoginPage(){
 				<div className="form__row">
 					<label className="form__label form__label--username"
 					       htmlFor="username">{t('login.username')}</label>
-					<input className="form__input form__input--username" type="username" name="username" value={formState.username} onChange={handleChange}
+					<input className="form__input form__input--username" type="username" name="username"
+					       value={formState.username} onChange={handleChange}
 					       placeholder={t('login.username')}/>
 				</div>
 				<div className="form__row">
 					<label className="form__label form__label--password"
 					       htmlFor="password">{t('login.password')}</label>
-					<input className="form__input form__input--password" type="password" name="password" value={formState.password} onChange={handleChange}
+					<input className="form__input form__input--password" type="password" name="password"
+					       value={formState.password} onChange={handleChange}
 					       placeholder={t('login.password')}/>
 				</div>
 				<div className="form__row login-form__row--checkbox">
