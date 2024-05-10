@@ -79,5 +79,6 @@ $transitions:   ( // @formatter:off
 
 $border:        1px solid map-get($colors, "border");
 $border-radius: map-get($sizes, "medium");
-
 $header-height: 50px;
+
+$flag_dir: '/images/flags/';

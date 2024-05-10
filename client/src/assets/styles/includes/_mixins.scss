@@ -18,6 +18,15 @@
 	}
 }
 
+@mixin flag($language) {
+	display:               inline-block;
+	background-image:      url('#{x.$flag_dir}#{$language}.svg');
+	background-position:   50%;
+	background-size:       contain;
+	background-repeat:     no-repeat;
+
+}
+
 // Build a flexbox
 @mixin flex($direction: row, $wrap: nowrap, $justify: null, $align: null) {
 	display:   flex;

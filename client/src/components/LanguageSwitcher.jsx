@@ -18,13 +18,12 @@ export default () => {
 			{/* Loop through the language map */}
 			{Object.entries(settings.locale.list).map(([key, flag]) => (
 				<span
-					onClick={() => handleLanguageChange(key)}
-					className="languages__flag"
+					onClick={() => handleLanguageChange(flag)}
+					className={`languages__flag languages__flag--${flag}`}
 					role="img"
 					key={key}
-					aria-label={t(`languages.aria.${key}`)}
+					aria-label={t(`languages.aria.${flag}`)}
 				>
-                    {flag}
                 </span>
 			))}
 		</div>

@@ -21,62 +21,59 @@ export default () => {
 	return (
 		<>
 			<Helmet>
-				<title>{t('register.pageTitle')}</title>
+				<title>{t('settings.pageTitle')}</title>
 				<meta name="description"
 				      content="Create a new account on our site. Enter your personal information and secure your profile."/>
 			</Helmet>
 
-			<form className="form register-form" onSubmit={handleFormSubmit}>
+			<form className="form settings-form" onSubmit={handleFormSubmit}>
 				<header className="form__header">
-					<h2 className="form__title">{t('register.formTitle')}</h2>
-					<Link className="link form__link" onClick={() => setIsLogin(true)} to="#">
-						{t('register.linkText')}
-					</Link>
+					<h2 className="form__title">{t('settings.formTitle')}</h2>
 				</header>
 
-				<div className="form__row register-form__row--name">
-					<label className="form__label form__label--name" htmlFor="name">{t('register.name')}</label>
-					<input className="form__input form__input--name" type="text" name="name" placeholder={t('register.name')}/>
+				<div className="form__row settings-form__row--name">
+					<label className="form__label form__label--name" htmlFor="name">{t('settings.name')}</label>
+					<input className="form__input form__input--name" type="text" name="name" placeholder={t('settings.name')}/>
 				</div>
 
-				<div className="form__row register-form__row--username">
-					<label className="form__label form__label--username" htmlFor="username">{t('register.username')}</label>
+				<div className="form__row settings-form__row--username">
+					<label className="form__label form__label--username" htmlFor="username">{t('settings.username')}</label>
 					<input className="form__input form__input--username" type="text" name="username"
-					       placeholder={t('register.username')}/>
+					       placeholder={t('settings.username')}/>
 				</div>
 
-				<div className="form__row register-form__row--email">
-					<label className="form__label form__label--email" htmlFor="email">{t('register.email')}</label>
-					<input className="form__input form__input--email" type="email" name="email" placeholder={t('register.email')}/>
+				<div className="form__row settings-form__row--email">
+					<label className="form__label form__label--email" htmlFor="email">{t('settings.email')}</label>
+					<input className="form__input form__input--email" type="email" name="email" placeholder={t('settings.email')}/>
 				</div>
 
-				<div className="form__row register-form__row--password">
-					<label className="form__label form__label--password" htmlFor="password">{t('register.password')}</label>
+				<div className="form__row settings-form__row--password">
+					<label className="form__label form__label--password" htmlFor="password">{t('settings.password')}</label>
 					<input className="form__input form__input--password" type="password" name="password"
-					       placeholder={t('register.password')}/>
+					       placeholder={t('settings.password')}/>
 				</div>
 
-				<div className="form__row register-form__row--confirm">
+				<div className="form__row settings-form__row--confirm">
 					<label className="form__label form__label--confirm-password"
-					       htmlFor="confirmpassword">{t('register.passConfirm')}</label>
+					       htmlFor="confirmpassword">{t('settings.passConfirm')}</label>
 					<input className="form__input form__input--confirm-password" type="password" name="confirmpassword"
-					       placeholder={t('register.passConfirm')}/>
+					       placeholder={t('settings.passConfirm')}/>
 				</div>
 
-				<div className="form__row register-form__row--accept-terms">
+				<div className="form__row settings-form__row--accept-terms">
 					<input className="form__input form__input--checkbox" type="checkbox" name="coppa" id="coppa"/>
 					<label className="form__label form__label--checkbox"
-					       htmlFor="coppa">{t('register.coppa')}</label>
+					       htmlFor="coppa">{t('settings.coppa')}</label>
 				</div>
 
-				<div className="form__row register-form__row--accept-terms">
+				<div className="form__row settings-form__row--accept-terms">
 					<input className="form__input form__input--checkbox" type="checkbox" name="terms" id="terms"/>
 					<label className="form__label form__label--checkbox"
-					       htmlFor="terms">{t('register.terms')}</label>
+					       htmlFor="terms">{t('settings.terms')}</label>
 				</div>
 
-				<div className="form__row register-form__row--submit">
-					<button className="form__button form__button--submit" type="submit">{t('register.button')}</button>
+				<div className="form__row settings-form__row--submit">
+					<button className="form__button form__button--submit" type="submit">{t('settings.button')}</button>
 				</div>
 
 				<div className="form__message form__message--error">{error}</div>

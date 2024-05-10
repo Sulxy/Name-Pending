@@ -15,11 +15,12 @@ body {
 	min-height: 100vh;
 
 }
+
 .content {
 	@include mixins.flex(column);
 	//align-items: center;
 	min-height: 100%;
-	flex-grow: 1;
+	flex-grow:  1;
 }
 
 .content {
@@ -28,7 +29,7 @@ body {
 }
 
 .link {
-	color: blue;
+	color:           blue;
 	text-decoration: none;
 }
 
@@ -37,7 +38,14 @@ body {
 	gap: map-get(x.$sizes, "small");
 
 	&__flag {
-		display: inline-block;
+		width:  map-get(x.$sizes, "medium");
+		height: .75 * map-get(x.$sizes, "medium");
 		cursor: pointer;
+
+		&--de {@include mixins.flag('de');}
+		&--en {@include mixins.flag('us');}
+		&--es {@include mixins.flag('es');}
+		&--fr {@include mixins.flag('fr');}
 	}
+
 }
