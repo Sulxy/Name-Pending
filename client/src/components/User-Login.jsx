@@ -1,9 +1,12 @@
 import React, { useContext, useState } from 'react';
+import { useMutation } from '@apollo/client';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../pages/Home';
 // Load language translations
 import { useTranslation } from 'react-i18next';
+import Auth from '../utils/auth';
+import { LOGIN_USER } from '../utils/mutations';
 import '../config/i18n';
 
 // Load CSS
@@ -12,13 +15,22 @@ import '../assets/styles/sections/loginregister.scss';
 export default () => {
 	const { setIsLogin }          = useContext(AppContext);
 	const { t }                   = useTranslation(); // For translations
-	const [username, setUsername] = useState('');
-	const [password, setPassword] = useState('');
 	const [error, setError]       = useState('');
 
-	const handleFormSubmit = (e) => {
-		e.preventDefault();
-		// TODO: Add Code Here
+	const [login, { errored, data }] = useMutation(LOGIN_USER);
+
+	// submit form
+	const handleFormSubmit = async (event) => {
+		event.preventDefault();
+		try {
+		const { data } = await login({
+			variables: { input: event },
+		});
+
+		Auth.login(data.login.token);
+		} catch (e) {
+		console.error(e);
+		}
 	};
 
 	return (
@@ -29,7 +41,7 @@ export default () => {
 				      content={t('login.page.description')}/>
 			</Helmet>
 
-			<form className="form login-form" onSubmit={handleFormSubmit}>
+			<form className="form login-form" onSubmit={(e) => handleFormSubmit(e)}>
 				<header className="form__header">
 					<h2 className="form__title">{t('login.formTitle')}</h2>
 					<Link className="link form__link" onClick={() => setIsLogin(false)}

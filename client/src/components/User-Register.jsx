@@ -17,6 +17,8 @@ export default () => {
 	const { handleFormSubmit } = useHandleFormSubmit();
 	const { t }                = useTranslation(); // For translations
 
+	
+
 	return (
 		<>
 			<Helmet>
@@ -32,11 +34,6 @@ export default () => {
 						{t('register.linkText')}
 					</Link>
 				</header>
-
-				<div className="form__row register-form__row--name">
-					<label className="form__label form__label--name" htmlFor="name">{t('register.name')}</label>
-					<input className="form__input form__input--name" type="text" name="name" placeholder={t('register.name')}/>
-				</div>
 
 				<div className="form__row register-form__row--username">
 					<label className="form__label form__label--username" htmlFor="username">{t('register.username')}</label>
