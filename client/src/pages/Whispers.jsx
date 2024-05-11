@@ -1,11 +1,10 @@
-// User.jsx
 import React, { useState } from 'react';
 import { format } from 'date-fns';
 import { Helmet } from 'react-helmet';
 
 import { settings } from '../config/settings';
 // Load CSS
-import '../assets/styles/whispers.scss';
+import '../assets/styles/pages/whispers.scss';
 
 /***
  TODO: Use some method to map the userId in messages to the user in users. Ideally, it should be replaced.

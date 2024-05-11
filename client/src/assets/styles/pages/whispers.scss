@@ -1,7 +1,7 @@
-@use "values" as x;
+@use "../includes/values" as x;
 // Predefined values and settings
-@use "icons";
-@use "mixins";
+@use "../includes/icons";
+@use "../includes/mixins";
 
 .whispers {
 	@include mixins.borders(());

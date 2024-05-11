@@ -37,6 +37,9 @@ Please see the [Github Documents](https://docs.github.com/en/get-started/explori
 No tests written at this time.
 
 ## Questions
-If you have any questions, feel free to reach out to me:
-- Email: Joshuahale829@gmail.com, dannyproa303@gmail.com, Samuelbishop06@yahoo.com, Ray@RayBeliveau.com
-- GitHub: [Sulxy](https://github.com/Sulxy), [DannySanchez03](https://github.com/DannySanchez03), [Rayxis](https://github.com/rayxis), [SamBishop06](https://github.com/SamBishop06). 
+If you have any questions, feel free to reach out to us:
+- Email: Joshuahale829@gmail.com, dannyproa303@gmail.com, Ray@RayBeliveau.com
+- GitHub: [Sulxy](https://github.com/Sulxy), [DannySanchez03](https://github.com/DannySanchez03), [Rayxis](https://github.com/rayxis). 
+
+## Credit
+SVG Flags, and modified related SASS: https://github.com/lipis/flag-icons

@@ -1,9 +1,8 @@
-// User.jsx
 import React, { useState, createContext } from 'react';
 import { UserLogin, UserRegister } from '../components';
 
 // Load CSS
-import '../assets/styles/home.scss';
+import '../assets/styles/pages/home.scss';
 
 export const AppContext = createContext();
 

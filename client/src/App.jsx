@@ -7,7 +7,7 @@ import client from './config/ApolloClient';
 
 // Import Components.
 import { PageFooter, PageHeader } from './components';
-import { Home, User, Whispers } from './pages';
+import { Home, Whispers } from './pages';
 
 // Load CSS.
 import './assets/styles/main.scss';
@@ -24,7 +24,6 @@ function App() {
 
 				<Routes>
 					<Route path="/" element={<Home/>}/>
-					<Route path="/user/*" element={<User/>}/>
 					<Route path="/whispers/*" element={<Whispers/>}/>
 				</Routes>
 
