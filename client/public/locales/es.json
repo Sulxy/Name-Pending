@@ -9,6 +9,7 @@
 		}
 	},
 	"languages":  {
+		"title": "Seleccione su idioma",
 		"aria": {
 			"de": "Alemán",
 			"en": "Inglés",
@@ -48,5 +49,14 @@
 			"title":       "",
 			"description": ""
 		}
+	},
+	"themes":    {
+		"title": "Selecciona tu tema",
+		"aria":  {
+			"dark":   "Oscuro",
+			"nature": "Naturaleza",
+			"light":  "Claro"
+		}
 	}
+
 }

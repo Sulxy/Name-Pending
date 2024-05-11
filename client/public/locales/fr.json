@@ -9,6 +9,7 @@
 		}
 	},
 	"languages":  {
+		"title": "Sélectionnez votre langue",
 		"aria": {
 			"de": "allemand",
 			"en": "anglais",
@@ -44,10 +45,13 @@
 		"coppa":       "Je reconnais avoir au moins 13 ans",
 		"terms":       "J'accepte les conditions générales"
 	},
-	"settings":   {
-		"page": {
-			"title":       "",
-			"description": ""
+	"themes":    {
+		"title": "Sélectionnez votre thème",
+		"aria":  {
+			"dark":   "Sombre",
+			"nature": "Nature",
+			"light":  "Clair"
 		}
 	}
+
 }

@@ -7,24 +7,24 @@ export default () => {
 	const { t, i18n } = useTranslation();
 
 	// This function is called when a language is selected from the UI
-	const handleLanguageChange = async (language) => {
+	const handleThemeChange = async (language) => {
 		// Change language in the i18next instance
-		await i18n.changeLanguage(language);
+		// await i18n.changeLanguage(language);
 		// Load the new locale after language has been changed
 	};
 
 	return (
-		<div className="languages">
-			<header className="languages__header">{t('languages.title')}</header>
+		<div className="themes">
+			<header className="themes__header">{t('themes.title')}</header>
 			{/* Loop through the language map */}
-			{Object.entries(settings.locale.list).map(([key, flag]) => (
+			{Object.entries(settings.themes).map(([key, theme]) => (
 				<span
-					onClick={() => handleLanguageChange(flag)}
-					className={`languages__flag languages__flag--${flag}`}
+					onClick={() => handleThemeChange(theme)}
+					className={`icon themes__icon themes__icon--${theme}`}
 					role="img"
 					key={key}
-					aria-label={t(`languages.aria.${flag}`)}
-				>
+					aria-label={t(`themes.aria.${theme}`)}>
+					{theme}
                 </span>
 			))}
 		</div>
