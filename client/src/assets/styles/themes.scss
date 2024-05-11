@@ -1,0 +1,31 @@
+:root body {
+	&.dark {
+		--color-bg:          #202020;
+		--color-edit:        #5660A7;
+		--color-error:       #DD8506;
+		--color-focus:       #004252;
+		--color-hover:       rgba(200, 200, 255, .5);
+		--color-hover2:      rgba(150, 150, 255, .5);
+		--color-link:        lightgreen;
+		--color-notes-bg:    #BB8606;
+		--color-selected:    #71A5D0;
+		--color-text:        white;
+		--color-menu-bg:     rgba(80, 80, 80, 0.9);
+		--color-menu-border: rgba(0, 0, 0, 0.5);
+	}
+
+	&.light {
+		--color-bg:          white;
+		--color-edit:        #D9D2E9;
+		--color-error:       red;
+		--color-focus:       #D3FFCE;
+		--color-hover:       rgba(200, 200, 255, .5);
+		--color-hover2:      rgba(150, 150, 255, .5);
+		--color-link:        darkgreen;
+		--color-notes-bg:    lightyellow;
+		--color-selected:    #FFCA4A;
+		--color-text:        black;
+		--color-menu-bg:     rgba(220, 220, 220, 0.9);
+		--color-menu-border: rgba(0, 0, 0, 0.5);
+	}
+}

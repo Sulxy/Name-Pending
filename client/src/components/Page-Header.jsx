@@ -6,9 +6,10 @@ export default function PageHeader() {
 		<header className="page-header">
 			<h1 className="page-header__item page-header__title">Whisper</h1>
 			<PageMenu/>
-			<LanguageSwitcher/>
-			<ThemeSwitcher/>
-			<div className="page-header__item"></div>
+			<div className="page-header__settings">
+				<LanguageSwitcher/>
+				<ThemeSwitcher/>
+			</div>
 		</header>
 	);
 }

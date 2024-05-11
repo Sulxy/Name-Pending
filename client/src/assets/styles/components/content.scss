@@ -1,3 +1,14 @@
-#root {
-	min-width: 400px;
+@use "../includes/mixins";
+@use "../includes/values" as x;
+
+.content {
+	@include mixins.flex(column, nowrap, center);
+
+	grid-area: content;
+	padding: map-get(x.$sizes, "large");
+}
+
+.link {
+	color:           blue;
+	text-decoration: none;
 }

@@ -1,35 +1,33 @@
 @use "../includes/mixins";
-// Predefined values and settings
 @use "../includes/values" as x; // Predefined values and settings
 
 .login-form,
 .register-form {
 	@include mixins.flex(column);
 
-	gap: map-get(x.$sizes, "medium");
-}
+	gap:        map-get(x.$sizes, "medium");
+	width:      400px;
+	align-self: end;
 
-// TODO: Fix this, because this is going global
-.form {
-	&__label:not(&__label--checkbox) {width: map-get(x.$sizes, "xlarge");}
+	@at-root .form {
+		&__row {
+			@include mixins.flex($justify: space-between);
+		}
+		//&__label:not(&__label--checkbox) { width: map-get(x.$sizes, "xlarge"); }
 
-	&__button {margin-left: auto;}
+		&__button { margin-left: auto; }
 
-	&__message {font-style: italic;}
-}
+		&__message {font-style: italic;}
 
-.form__input--checkbox {margin-left: map-get(x.$sizes, "medium");}
-
-// Sizing
-.login-form {width: 350px;}
-
-.register-form {width: 400px;}
-
-.login-form,
-.register-form {
-	@include mixins.res(mobile) {align-self: center;}
-	@include mixins.res(tablet, desktop) {
-		align-self: end;
-		margin-right: map-get(x.$sizes, "medium-large");
+		&__input--checkbox {margin-left: map-get(x.$sizes, "medium");}
 	}
 }
+// Sizing
+//.login-form,
+//.register-form {
+//	@include mixins.res(mobile) {align-self: center;}
+//	@include mixins.res(tablet, desktop) {
+//		align-self: end;
+//		margin-right: map-get(x.$sizes, "medium-large");
+//	}
+//}
