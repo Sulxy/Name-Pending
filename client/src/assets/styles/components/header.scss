@@ -1,11 +1,89 @@
-@use "../includes/values" as x;         // Predefined values and settings
+@use "../includes/mixins";
+@use "../includes/values" as x; // Predefined values and settings
+
+.languages,
+.themes {
+	@include mixins.flex(column, nowrap, center);
+	gap: map-get(x.$sizes, "medium-small");
+
+	&__header { display: none; }
+
+	.languages__flag,
+	.themes__icon {
+		line-height: 1rem;
+	}
+}
+
+.languages__flag {
+	@include mixins.hovergrow(1.5);
+	//	display:
+
+	width:  map-get(x.$sizes, "medium-large");
+	height: .75 * map-get(x.$sizes, "medium");
+
+	cursor: pointer;
+
+	&--de { @include mixins.flag('de'); }
+	&--en { @include mixins.flag('us'); }
+	&--es { @include mixins.flag('es'); }
+	&--fr { @include mixins.flag('fr'); }
+}
+
+.themes__icon {
+	@include mixins.hovergrow(1.5);
+
+	cursor:    pointer;
+	font-size: map-get(x.$font-sizes, "medium");
+	color:     black;
+
+	&--dark_mode:hover { &, &.selected { color: darkgray; } }
+	&--nature:hover { &, &.selected { color: lightgreen; } }
+	&--light_mode:hover { &, &.selected { color: orange; } }
+}
 
 .page-header {
-	padding: map-get(x.$sizes, "large");
+	@include mixins.flex($justify: space-between, $align: center);
+
+	grid-area: header;
+
+	&__settings {
+		@include mixins.flex($align: start);
+		padding: map-get(x.$sizes, "small");
+	}
 
 	&__title {
-		color: map-get(x.$colors, header-font);
+		padding:     map-get(x.$sizes, "medium");
+		color:       map-get(x.$colors, header-font);
 		font-family: map-get(x.$fonts, "title");
+		font-size:   map-get(x.$font-sizes, "large");
 		text-shadow: map-get(x.$shadows, "small");
+	}
+
+	&:has(+ .home) {
+		@include mixins.flex(column, $justify: center);
+
+		.page-header__title {
+			padding:   map-get(x.$sizes, "large");
+			font-size: map-get(x.$font-sizes, "xlarge");
+		}
+
+		.page-header__settings {
+			@include mixins.flex(column, nowrap, center, center);
+
+			gap: map-get(x.$sizes, "medium-large");
+		}
+
+		.languages,
+		.themes {
+			@include mixins.flex(row, wrap, center);
+
+			&__header {
+				display:    block;
+				width:      100%;
+				text-align: center;
+			}
+		}
+
+		.themes__icon { font-size: map-get(x.$font-sizes, "medium-large"); }
 	}
 }

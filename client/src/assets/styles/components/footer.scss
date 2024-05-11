@@ -1,29 +1,24 @@
+@use "../includes/mixins";
 @use "../includes/values" as x; // Predefined values and settings
 
 .page-footer {
-	display:         flex;
-	flex-flow:       column nowrap;
-	align-items:     center;
-	justify-content: center;
-	margin-top: auto;
-	padding:         map-get(x.$sizes, "xlarge");
+	@include mixins.flex(column, nowrap, center, center);
 
-	color:           map-get(x.$colors, header-font);
-	font-family:     map-get(x.$fonts, "main");
-	font-size:       map-get(x.$font-sizes, "small");
+	grid-area:    footer;
+	align-self:   end;
+	justify-self: end;
+	width:        100vw;
+	padding:      map-get(x.$sizes, "large");
 
-	&__nav {
-		padding: map-get(x.$sizes, "medium-large");
-	}
+	color:        map-get(x.$colors, header-font);
+	font-size:    map-get(x.$font-sizes, "small");
+
+	&__nav { padding: map-get(x.$sizes, "medium-large"); }
 
 	&__list {
-		display:    flex;
-		flex-flow:  row nowrap;
+		@include mixins.flex();
+
 		gap:        map-get(x.$sizes, "medium");
 		list-style: none;
 	}
-
-	&__item {}
-
-	&__text {}
 }

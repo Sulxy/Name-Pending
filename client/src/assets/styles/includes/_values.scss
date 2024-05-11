@@ -27,7 +27,7 @@ $fonts: ( // @formatter:off
 
 // Font Sizes
 $font-sizes:    ( // @formatter:off
-	                xlarge:       3rem,
+	                xlarge:       5rem,
 	                large:        2rem,
 	                medium-large: 1.5rem,
 	                medium:       1rem,
@@ -66,11 +66,13 @@ $sizes: ( // @formatter:off
 // Transitions
 $transitions:   ( // @formatter:off
 					button:         font-size .25s ease,
-	                transform:      transform .25s ease,
 	                bg-color:       background-color .25s ease,
 	                bg-color-long:  background-color 1s ease,
 	                box-shadow:     box-shadow .25s ease,
-	                text-shadow:    text-shadow .25s ease
+					color:          color .25s ease,
+					filter:         filter .25s ease,
+	                text-shadow:    text-shadow .25s ease,
+					transform:      transform .25s ease
                 ); // @formatter:on
 
 /***

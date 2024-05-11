@@ -5,9 +5,12 @@ export const settings = {
 		list:    ['en', 'de', 'fr', 'es']
 	},
 	themes:     {
-		dark:  'Dark',
-		green: 'Green',
-		light: 'Light'
+		default: 'light_mode',
+		list: {
+			dark:   'dark_mode',
+			nature: 'nature',
+			light:  'light_mode'
+		}
 	},
 	timeFormat: 'h:mm a' // Clock Time Format
 };

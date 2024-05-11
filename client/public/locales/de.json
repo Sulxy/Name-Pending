@@ -9,6 +9,7 @@
 		}
 	},
 	"languages": {
+		"title": "Wählen Sie Ihre Sprache",
 		"aria": {
 			"de": "Deutsch",
 			"en": "Englisch",
@@ -49,5 +50,14 @@
 			"title":       "",
 			"description": ""
 		}
+	},
+	"themes":    {
+		"title": "Wählen Sie Ihr Thema",
+		"aria":  {
+			"dark":   "Dunkles",
+			"nature": "Natur",
+			"light":  "Hell"
+		}
 	}
+
 }

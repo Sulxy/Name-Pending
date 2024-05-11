@@ -8,8 +8,7 @@
 		@each $side in $values {
 			border-#{$side}: x.$border;
 		}
-	}
-	@else {
+	} @else {
 		border: x.$border;
 
 		@each $side in $values {
@@ -19,11 +18,11 @@
 }
 
 @mixin flag($language) {
-	display:               inline-block;
-	background-image:      url('#{x.$flag_dir}#{$language}.svg');
-	background-position:   50%;
-	background-size:       contain;
-	background-repeat:     no-repeat;
+	display:             inline-block;
+	background-image:    url('#{x.$flag_dir}#{$language}.svg');
+	background-position: 50%;
+	background-size:     contain;
+	background-repeat:   no-repeat;
 
 }
 
@@ -37,6 +36,17 @@
 	};
 	@if $align != null {
 		align-items: $align;
+	}
+}
+
+@mixin hovergrow($scale) {
+	transition:  map-get(x.$transitions, "transform"),
+	             map-get(x.$transitions, "color");
+	filter: drop-shadow(map-get(x.$shadows, "none"));
+
+	&:hover {
+		transform: scale($scale);
+		filter: drop-shadow(map-get(x.$shadows, "small"));
 	}
 }
 
