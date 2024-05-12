@@ -1,0 +1,18 @@
+@use "./includes/mixins" as m;
+@use "./includes/values" as v;
+
+.box {
+	@include m.borders();
+	@include m.shadow(box, medium);
+
+	padding:          map-get(v.$sizes, "medium-large");
+
+	background-color: var(--box-bg);
+	color:            var(--box-text);
+	border-radius:    v.$border-radius;
+}
+
+.link {
+	color:           var(--link-text);
+	text-decoration: none;
+}

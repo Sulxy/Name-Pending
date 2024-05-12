@@ -1,14 +1,9 @@
-@use "../includes/mixins";
-@use "../includes/values" as x;
+@use "../includes/mixins" as m;
+@use "../includes/values" as v;
 
 .content {
-	@include mixins.flex(column, nowrap, center);
+	@include m.flex(column, nowrap, center);
 
 	grid-area: content;
-	padding: map-get(x.$sizes, "large");
-}
-
-.link {
-	color:           blue;
-	text-decoration: none;
+	padding:   map-get(v.$sizes, "medium");
 }

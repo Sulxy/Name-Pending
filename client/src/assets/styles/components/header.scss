@@ -1,89 +1,85 @@
-@use "../includes/mixins";
-@use "../includes/values" as x; // Predefined values and settings
+@use "../includes/mixins" as m;
+@use "../includes/values" as v;
+@use "../includes/icons";
 
 .languages,
-.themes {
-	@include mixins.flex(column, nowrap, center);
-	gap: map-get(x.$sizes, "medium-small");
+.themes { gap: map-get(v.$sizes, "medium"); }
 
-	&__header { display: none; }
+.languages__flag {
+	width:  map-get(v.$sizes, "medium-large");
+	height: .75 * map-get(v.$sizes, "medium-large");
+}
 
-	.languages__flag,
-	.themes__icon {
-		line-height: 1rem;
-	}
+.languages__flag,
+.themes__icon {
+	@include m.hovergrow(1.5);
+
+	cursor:      pointer;
+	line-height: 1rem;
 }
 
 .languages__flag {
-	@include mixins.hovergrow(1.5);
-	//	display:
-
-	width:  map-get(x.$sizes, "medium-large");
-	height: .75 * map-get(x.$sizes, "medium");
-
 	cursor: pointer;
 
-	&--de { @include mixins.flag('de'); }
-	&--en { @include mixins.flag('us'); }
-	&--es { @include mixins.flag('es'); }
-	&--fr { @include mixins.flag('fr'); }
+	&--de { @include m.flag('de'); }
+	&--en { @include m.flag('us'); }
+	&--es { @include m.flag('es'); }
+	&--fr { @include m.flag('fr'); }
 }
 
 .themes__icon {
-	@include mixins.hovergrow(1.5);
+	//@include m.font(icons, "medium");
+	color: var(--icon);
 
-	cursor:    pointer;
-	font-size: map-get(x.$font-sizes, "medium");
-	color:     black;
-
-	&--dark_mode:hover { &, &.selected { color: darkgray; } }
-	&--nature:hover { &, &.selected { color: lightgreen; } }
-	&--light_mode:hover { &, &.selected { color: orange; } }
+	&--dark_mode:hover  { &, &.selected { color: var(--theme-dark-hover); } }
+	&--nature:hover     { &, &.selected { color: var(--theme-nature-hover); } }
+	&--light_mode:hover { &, &.selected { color: var(--theme-light-hover); } }
 }
 
 .page-header {
-	@include mixins.flex($justify: space-between, $align: center);
+	@include m.flex($justify: space-between, $align: center);
 
 	grid-area: header;
+	gap:       map-get(v.$sizes, "medium");
 
 	&__settings {
-		@include mixins.flex($align: start);
-		padding: map-get(x.$sizes, "small");
+		@include m.flex();
+
+		gap: map-get(v.$sizes, "medium");
 	}
 
 	&__title {
-		padding:     map-get(x.$sizes, "medium");
-		color:       map-get(x.$colors, header-font);
-		font-family: map-get(x.$fonts, "title");
-		font-size:   map-get(x.$font-sizes, "large");
-		text-shadow: map-get(x.$shadows, "small");
+		@include m.font(title, title);
+		@include m.shadow(text, medium);
+
+		color: var(--header-title);
 	}
 
 	&:has(+ .home) {
-		@include mixins.flex(column, $justify: center);
+		@include m.flex(column, $justify: center);
 
-		.page-header__title {
-			padding:   map-get(x.$sizes, "large");
-			font-size: map-get(x.$font-sizes, "xlarge");
-		}
+		.page-header__title { @include m.font(title, title-intro); }
 
-		.page-header__settings {
-			@include mixins.flex(column, nowrap, center, center);
-
-			gap: map-get(x.$sizes, "medium-large");
-		}
+		.page-header__settings { @include m.flex(column, nowrap, center, center); }
 
 		.languages,
 		.themes {
-			@include mixins.flex(row, wrap, center);
+			@include m.flex(row, wrap, center);
 
-			&__header {
-				display:    block;
-				width:      100%;
-				text-align: center;
-			}
+			text-align: center;
+
+			&__header { width: 100%; }
+
+			&__icon { font-size: map-get(v.$font-sizes, "medium-large"); }
 		}
+	}
 
-		.themes__icon { font-size: map-get(x.$font-sizes, "medium-large"); }
+	&:not(:has(+ .home)) {
+		.languages,
+		.themes {
+			@include m.flex(column, $align: center);
+
+			&__header { display: none; }
+		}
 	}
 }
