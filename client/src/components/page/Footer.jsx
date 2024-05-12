@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 // Load language translations
 import { useTranslation } from 'react-i18next';
-import '../config/i18n';
+import '../../config/i18n.js';
 
-export default function PageFooter() {
+export default function Footer() {
 	const { t } = useTranslation(); // For translations
 	return (
 		<footer className="page-footer">
