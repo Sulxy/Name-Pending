@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { useLazyQuery } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 
-import '../config/i18n';
-import { AppContext } from '../pages/Home';
-import Auth from '../utils/auth';
-import { LOGIN_USER } from '../utils/queries';
+import '../../config/i18n.js';
+import { AppContext } from '../../pages/Home.jsx';
+import Auth from '../../utils/auth.js';
+import { LOGIN_USER } from '../../utils/queries.js';
 
 // Load CSS
-import '../assets/styles/components/loginregister.scss';
+import '../../assets/styles/components/loginregister.scss';
 
 export default function LoginPage() {
 	const { setIsLogin }            = useContext(AppContext);
@@ -64,7 +64,7 @@ export default function LoginPage() {
 				      content={t('login.page.description')}/>
 			</Helmet>
 
-			<form className="form login-form" onSubmit={handleFormSubmit}>
+			<form className="box form login-form" onSubmit={handleFormSubmit}>
 				<header className="form__header">
 					<h2 className="form__title">{t('login.formTitle')}</h2>
 					<Link className="link form__link" onClick={() => setIsLogin(false)}

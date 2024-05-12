@@ -2,14 +2,14 @@ import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { CREATE_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
-import { AppContext } from '../pages/Home';
+import { CREATE_USER } from '../../utils/mutations.js';
+import Auth from '../../utils/auth.js';
+import { AppContext } from '../../pages/Home.jsx';
 import { useTranslation } from 'react-i18next';
-import '../config/i18n';
-import '../assets/styles/components/loginregister.scss';
+import '../../config/i18n.js';
+import '../../assets/styles/components/loginregister.scss';
 
-const UserRegister = () => {
+const Register = () => {
     const { setIsLogin } = useContext(AppContext);
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -51,7 +51,7 @@ const UserRegister = () => {
                 <meta name="description" content={t('register.page.description')} />
             </Helmet>
 
-            <form className="form register-form" onSubmit={handleFormSubmit}>
+            <form className="box form register-form" onSubmit={handleFormSubmit}>
                 <header className="form__header">
                     <h2 className="form__title">{t('register.formTitle')}</h2>
                     <Link className="link form__link" onClick={() => setIsLogin(true)} to="#">
@@ -105,4 +105,4 @@ const UserRegister = () => {
     );
 }
 
-export default UserRegister;
+export default Register;
