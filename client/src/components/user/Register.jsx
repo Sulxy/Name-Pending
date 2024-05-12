@@ -51,7 +51,7 @@ const Register = () => {
                 <meta name="description" content={t('register.page.description')} />
             </Helmet>
 
-            <form className="form register-form" onSubmit={handleFormSubmit}>
+            <form className="box form register-form" onSubmit={handleFormSubmit}>
                 <header className="form__header">
                     <h2 className="form__title">{t('register.formTitle')}</h2>
                     <Link className="link form__link" onClick={() => setIsLogin(true)} to="#">

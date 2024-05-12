@@ -64,7 +64,7 @@ export default function LoginPage() {
 				      content={t('login.page.description')}/>
 			</Helmet>
 
-			<form className="form login-form" onSubmit={handleFormSubmit}>
+			<form className="box form login-form" onSubmit={handleFormSubmit}>
 				<header className="form__header">
 					<h2 className="form__title">{t('login.formTitle')}</h2>
 					<Link className="link form__link" onClick={() => setIsLogin(false)}
