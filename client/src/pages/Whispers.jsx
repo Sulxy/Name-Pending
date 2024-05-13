@@ -10,6 +10,7 @@ import { users } from '../data/whisperSampleData.js';
 
 export default () => {
 	const [inputText, setInputText] = useState('');
+	const [activeStyle, setActiveStyle] = useState(Object.keys(settings.messages.list)[0]);
 	const { loading: postsLoading, error: postsError, data: postsData } = useQuery(QUERY_POSTS);
 	const [createPost] = useMutation(CREATE_POST, {
 		refetchQueries: [{ query: QUERY_POSTS }],
@@ -38,30 +39,40 @@ export default () => {
 				<title>Whispers</title>
 				<meta name="description" content="This is a place to have a discussion." />
 			</Helmet>
-			<MessageList loading={postsLoading} error={postsError} posts={postsData?.posts || []} />
+			<MessageList activeStyle={activeStyle} loading={postsLoading} error={postsError} posts={postsData?.posts || []} />
 			<ChatInput onSendMessage={handleSendMessage} inputText={inputText} setInputText={setInputText} />
+			<ChatStyle activeStyle={activeStyle} setActiveStyle={setActiveStyle}/>
 			<UserList users={users} />
 		</main>
 	);
 };
 
-function MessageList({ loading, error, posts }) {
+function MessageList({ messages, activeStyle, loading, error, posts }) {
+	// reference to the message list for auto scroll
 	const messageListRef = useRef(null);
 
+	// Auto scroll when posts updated
 	useEffect(() => {
 		if (messageListRef.current) {
 			messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
 		}
 	}, [posts]);
 
+	// handle loading state
 	if (loading) return <p>Loading posts...</p>;
+
+	// handle error state
 	if (error) return <p>Error fetching posts: {error.message}</p>;
-	
+
+	const messageListClasses = `whispers__message-list message-list ${activeStyle}`;
+
 	return (
-		<ul ref={messageListRef} className="whispers__message-list message-list">
-			{posts.map((post) => (
-				<Message key={post._id} message={post.message} user={post.user}/>
-			))}
+		<ul ref={messageListRef} className={messageListClasses}>
+			{messages.map(message => <Message
+				key={message.id}
+				{...message}
+				timestamp={format(new Date(message.timestamp), settings.timeFormat)}
+			/>)}
 		</ul>
 	);
 }
@@ -106,6 +117,39 @@ function ChatInput({ onSendMessage, inputText, setInputText }) {
 		</form>
 	);
 }
+
+function ChatStyle({ activeStyle, setActiveStyle }) {
+	const handleStyleChange = (styleKey) => {
+		if (activeStyle !== styleKey) setActiveStyle(styleKey);
+		// TODO: Save settings for logged in user.
+	};
+
+	const styleClasses = React.useMemo(() => {
+		return Object.keys(settings.messages.list).map((key) => {
+			return {
+				key,
+				classNames: [
+					            'chat-styles__icon',
+					            `chat-styles__icon--${key}`,
+					            activeStyle === key ? 'active' : '',
+				            ].join(' '),
+				label: key,
+			};
+		});
+	}, [activeStyle]);
+
+	return (
+		<ul className="whispers__chat-styles chat-styles">
+			{Object.keys(settings.messages.list).map((styleKey) => (
+				<li
+					key={styleKey}
+					onClick={() => handleStyleChange(styleKey)}
+					className={`chat-styles__icon ${styleKey} ${activeStyle === styleKey ? 'active' : ''}`}>
+					{settings.messages.list[styleKey]}
+				</li>
+			))}
+		</ul>
+	);}
 
 function UserList({ users }) {
 	return (
