@@ -124,32 +124,33 @@ function ChatStyle({ activeStyle, setActiveStyle }) {
 		// TODO: Save settings for logged in user.
 	};
 
-	const styleClasses = React.useMemo(() => {
-		return Object.keys(settings.messages.list).map((key) => {
-			return {
-				key,
-				classNames: [
-					            'chat-styles__icon',
-					            `chat-styles__icon--${key}`,
-					            activeStyle === key ? 'active' : '',
-				            ].join(' '),
-				label: key,
-			};
-		});
-	}, [activeStyle]);
+	// const styleClasses = React.useMemo(() => {
+	// 	return Object.keys(settings.messages.list).map((key) => {
+	// 		return {
+	// 			key,
+	// 			classNames: [
+	// 				            'chat-styles__icon',
+	// 				            `chat-styles__icon--${key}`,
+	// 				            activeStyle === key ? 'active' : '',
+	// 			            ].join(' '),
+	// 			label: key,
+	// 		};
+	// 	});
+	// }, [activeStyle]);
 
-	return (
-		<ul className="whispers__chat-styles chat-styles">
-			{Object.keys(settings.messages.list).map((styleKey) => (
-				<li
-					key={styleKey}
-					onClick={() => handleStyleChange(styleKey)}
-					className={`chat-styles__icon ${styleKey} ${activeStyle === styleKey ? 'active' : ''}`}>
-					{settings.messages.list[styleKey]}
-				</li>
-			))}
-		</ul>
-	);}
+	// return (
+	// 	<ul className="whispers__chat-styles chat-styles">
+	// 		{Object.keys(settings.messages.list).map((styleKey) => (
+	// 			<li
+	// 				key={styleKey}
+	// 				onClick={() => handleStyleChange(styleKey)}
+	// 				className={`chat-styles__icon ${styleKey} ${activeStyle === styleKey ? 'active' : ''}`}>
+	// 				{settings.messages.list[styleKey]}
+	// 			</li>
+	// 		))}
+	// 	</ul>
+	// );
+}
 
 function UserList({ users }) {
 	return (
