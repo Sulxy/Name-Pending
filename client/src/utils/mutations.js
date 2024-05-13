@@ -13,20 +13,6 @@ export const CREATE_USER = gql`
     }
 `;
 
-export const CREATE_POST = gql`
-    mutation createPost($user: ID!, $message: String!, $timestamp: String) {
-        createPost(input: { user: $user, message: $message, timestamp: $timestamp }) {
-            _id
-            user {
-                _id
-                username
-            }
-            message
-            timestamp
-        }
-    }
-`;
-
 export const DELETE_USER = gql`
     mutation deleteUser($id: ID!) {
         deleteUser(id: $id) {

@@ -8,7 +8,7 @@ const resolvers = {
       return await User.find().populate('posts');
     },
     posts: async () => {
-      return await Post.find({}).limit(2000);
+      return await Post.find({}).populate('user', 'username');
     },
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
