@@ -9,7 +9,10 @@
 
 	@at-root .form {
 		&__button   { margin-left: auto; }
-		&__label    { margin-right: auto; }
+		&__label    {
+			max-width: 80%;
+			margin-right: auto;
+		}
 		&__message  { font-style: italic; }
 		&__input    { margin-left: auto; }
 

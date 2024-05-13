@@ -1,5 +1,6 @@
 @use "./includes/reset";
 @use "./includes/mixins" as m;
+@use "./includes/values" as v;
 @use "common";
 @use "themes";
 @use "components/header";
@@ -10,12 +11,13 @@
 body {
 	@include m.font(main, 88%);
 
-	background-color:    var(--body-bg);
-	background-image:    var(--body-bg-img);
-	background-position: center;
-	background-repeat:   no-repeat;
-	background-size:     cover;
-	color:               var(--body-text);
+	background-attachment: fixed;
+	background-color:      var(--body-bg);
+	background-image:      var(--body-bg-img);
+	background-position:   center;
+	background-repeat:     no-repeat;
+	background-size:       cover;
+	color:                 var(--body-text);
 }
 
 #root {
@@ -26,9 +28,8 @@ body {
 		"header"
 		"content"
 		"footer";
-	grid-template-rows: auto 1fr auto;
+	grid-template-rows: map-get(v.$sizes, page-header) 1fr map-get(v.$sizes, page-footer);
 
-	height:             100vh;
 	min-width:          375px;
 	width:              100vw;
 	overflow:           hidden;
@@ -43,4 +44,6 @@ body {
 			grid-template-rows:    1fr auto;
 		}
 	}
+
+	&:not(:has(> .home)) { height: 100vh; }
 }

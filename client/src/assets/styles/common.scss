@@ -5,11 +5,11 @@
 	@include m.borders();
 	@include m.shadow(box, medium);
 
-	padding:          map-get(v.$sizes, "large");
+	padding:          map-get(v.$sizes, large);
 
 	background-color: var(--box-bg);
 	color:            var(--box-text);
-	border-radius:    v.$border-radius;
+	border-radius:    map-get(v.$sizes, border-radius);
 }
 
 .link {

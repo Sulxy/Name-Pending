@@ -1,0 +1,79 @@
+@use "../includes/mixins" as m;
+@use "../includes/values" as v;
+
+.message-list {
+	&.board .message {
+		@include m.shadow(box, light);
+		display:            grid;
+		grid-template-areas:
+			"username message"
+			"timestamp message";
+		grid-template-rows: auto 1fr;
+
+		padding:            map-get(v.$sizes, medium-small);
+
+		background-color:   var(--message-bg);
+
+		&.me { margin-left: auto; }
+
+		&__content {
+			grid-area:   message;
+			margin-left: map-get(v.$sizes, small);
+		}
+
+		&__timestamp {
+			grid-area:  timestamp;
+			align-self: start;
+		}
+
+		&__username {
+			grid-area: username;
+		}
+	}
+
+	&.irc .message {
+		@include m.flex(row, nowrap, flex-start, flex-start);
+
+		&.me { margin-left: auto; }
+
+		// Change the order of the elements in the message
+		&__content {
+			flex-grow:  1;
+			order:      2;
+			text-align: left;
+		}
+
+		&__timestamp {
+			width:      100px;
+			order:      0;
+			text-align: left;
+		}
+
+		&__username {
+			width:      100px;
+			order:      1;
+			text-align: left;
+		}
+	}
+
+	&.txt .message {
+		@include m.flex(column);
+		@include m.shadow(box, light);
+
+		width:            80%;
+
+		background-color: var(--message-bg);
+
+		&.me { margin-left: auto; }
+
+		// Change the order of the elements in the message
+		&__content { order: 1; }
+
+		&__timestamp {
+			order:       2;
+			margin-left: auto;
+		}
+
+		&__username { order: 0; }
+	}
+}

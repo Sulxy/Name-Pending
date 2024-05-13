@@ -1,114 +1,129 @@
-@use "../includes/values" as x;
-// Predefined values and settings
-@use "../includes/icons";
-@use "../includes/mixins";
+@use "../includes/mixins" as m;
+@use "../includes/values" as v;
+@use "../includes/icons" as i;
+@use "../includes/message-style";
 
 .whispers {
-	@include mixins.borders(());
-	display:                grid;
+	display:            grid;
 	grid-template-areas:
-		"messages users"
-		"input users";
+		"messages"
+		"input";
+	grid-template-rows: 1fr auto;
+	position:           relative;
+	height:             calc(100vh - map-get(v.$sizes, page-header));
 
-	grid-template-columns:  auto 150px;
-	grid-template-rows:     auto map-get(x.$sizes, "large");
-	width:                  800px;
-	height:                 500px;
-	margin:                 auto;
-	overflow:               hidden;
+	background-color:   var(--box-bg);
 
-	align-self:             center;
-
-	border-radius:          x.$border-radius;
-	box-shadow:             map-get(x.$shadows, "large");
-
-	font-family:            map-get(x.$fonts, "main");
-	font-size:              map-get(x.$font-sizes, "small");
-
-	&__chat-input {
-		grid-area: input;
+	@include m.res(mobile) {
+		.user-list { display: none; }
 	}
+	@include m.res(tablet, desktop) {
+		@include m.borders();
+		@include m.shadow(box, medium);
 
-	&__message-list {
-		grid-area: messages;
-		gap:       map-get(x.$sizes, "medium");
-		padding:   map-get(x.$sizes, "medium");
-	}
+		grid-template-areas:
+			"messages users"
+			"input users";
 
-	&__user-list {
-		grid-area: users;
-		padding:   map-get(x.$sizes, "medium");
+		grid-template-columns:  auto map-get(v.$sizes, users);
+		grid-template-rows:     auto map-get(v.$sizes, large);
+
+		height: calc(100vh - map-get(v.$sizes, page-header) - map-get(v.$sizes, page-footer) - 50px);
+
+		margin: auto;
+
+		border-radius: map-get(v.$sizes, border-radius);
 	}
 }
 
 .chat-input {
-	display:   flex;
-	flex-flow: row nowrap;
+	@include m.flex();
+	grid-area:  input;
+
+	min-height: map-get(v.$sizes, medium-large);
 
 	&__field {
-		@include mixins.borders((top), false);
+		@include m.borders((top), false);
+		border-bottom-left-radius: map-get(v.$sizes, border-radius);
 
 		flex-grow:                 1;
-		padding:                   map-get(x.$sizes, "medium");
+		padding:                   map-get(v.$sizes, medium-small);
 
-		border-bottom-left-radius: x.$border-radius;
+		background-color:          transparent;
+		color:                     var(--body-text);
 
-		&:focus {
-			outline: none;
-		}
+		&:focus { outline: none; }
 	}
 
 	&__send-button {
-		@include icons.icon-button-transform("medium-large", "large");
-		@include mixins.borders((top), false);
+		@include m.borders((top), false);
+		@include i.icon-button-transform(medium-large, large);
 
 		flex-shrink:      0;
-		flex-basis:       map-get(x.$sizes, "large");
+		flex-basis:       map-get(v.$sizes, icon-button);
 
-		background-color: transparent;
+		background-color: var(--message-button-bg);
+		color:            var(--body-text);
+	}
+}
+
+.chat-styles {
+	@include m.flex(row, nowrap, center, center);
+	@include m.font(icons, medium);
+
+	position:   absolute;
+	right:      map-get(v.$sizes, medium);
+	gap:        map-get(v.$sizes, small);
+	list-style: none;
+
+	cursor:     pointer;
+
+	@include m.res(mobile) {
+		top: - map-get(v.$sizes, medium-small);
+	}
+	@include m.res(tablet, desktop) {
+		top: - map-get(v.$sizes, medium-large);
+	}
+
+	&__icon {
+		@include m.hovergrow(1.5);
 	}
 }
 
 .message-list {
-	@include mixins.flex(column);
+	@include m.flex(column);
 
-	list-style-type: none;
-	overflow-y:      auto;
+	grid-area:  messages;
 
-	&__message {
-		display:   flex;
-		flex-flow: row nowrap;
-	}
+	gap:        map-get(v.$sizes, small);
+	padding:    map-get(v.$sizes, medium-small);
+	overflow-y: auto;
+
+	list-style: none;
 }
 
 .message {
-	&__content {
-		flex-grow: 1;
-	}
+	gap:           map-get(v.$sizes, small);
+	padding:       map-get(v.$sizes, medium-small);
 
-	&__timestamp {
-		flex-basis:  map-get(x.$sizes, "large");
-		flex-shrink: 0;
-	}
+	border-radius: map-get(v.$sizes, border-radius);
 
-	&__username {
-		flex-basis:  map-get(x.$sizes, "xlarge");
-		flex-shrink: 0;
-	}
+	&__timestamp,
+	&__username { font-size: map-get(v.$font-sizes, small); }
+
+	&.me { background-color: var(--message-me-bg); }
 }
 
 .user-list {
-	@include mixins.borders((left), false);
-	@include mixins.flex(column);
+	@include m.borders((left), false);
+	@include m.flex(column);
 
-	list-style-type: none;
+	grid-area:       users;
+
+	padding:         map-get(v.$sizes, "medium");
 	overflow-y:      auto;
 
-	&__user {
-		padding: map-get(x.$sizes, "tiny");
+	list-style-type: none;
 
-		&:hover {
-			cursor: pointer;
-		}
-	}
+	&__user { padding: map-get(v.$sizes, "tiny"); }
 }
