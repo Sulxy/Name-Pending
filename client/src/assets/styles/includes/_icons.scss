@@ -2,7 +2,8 @@
 @use "values" as v;
 
 .icon {
-	font-family:             map-get(v.$fonts, "icons");
+	@include m.font(icons, medium-large);
+
 	font-variation-settings: 'FILL' 0,
 	                         'wght' 200,
 	                         'GRAD' 0,
@@ -13,7 +14,6 @@
 	@include m.shadow(text, light);
 
 	cursor:      pointer;
-	font-size:   map-get(v.$font-sizes, $normal);
 	line-height: 100%;
 
 	transition:  map-get(v.$transitions, "button"),

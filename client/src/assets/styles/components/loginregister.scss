@@ -8,12 +8,19 @@
 	gap: map-get(v.$sizes, "medium");
 
 	@at-root .form {
-		&__button { margin-left: auto; }
-		&__label { margin-right: auto; }
-		&__message {font-style: italic;}
+		&__button   { margin-left: auto; }
+		&__label    { margin-right: auto; }
+		&__message  { font-style: italic; }
+		&__input    { margin-left: auto; }
+
 		&__row { @include m.flex(row, wrap, space-between, center); }
 	}
 
+	@include m.res(mobile, tablet) {
+		max-width: 400px;
+		width:     100%;
+		margin:    auto;
+	}
 	@include m.res(desktop) {
 		width:       400px;
 		margin-left: auto;

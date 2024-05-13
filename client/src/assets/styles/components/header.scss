@@ -3,11 +3,10 @@
 @use "../includes/icons";
 
 .languages,
-.themes { gap: map-get(v.$sizes, "medium"); }
+.themes {
+	@include m.flex(row, wrap, center);
 
-.languages__flag {
-	width:  map-get(v.$sizes, "medium-large");
-	height: .75 * map-get(v.$sizes, "medium-large");
+	gap: map-get(v.$sizes, "medium");
 }
 
 .languages__flag,
@@ -19,6 +18,9 @@
 }
 
 .languages__flag {
+	width:  map-get(v.$sizes, "medium-large");
+	height: .75 * map-get(v.$sizes, "medium-large");
+
 	cursor: pointer;
 
 	&--de { @include m.flag('de'); }
@@ -31,21 +33,21 @@
 	//@include m.font(icons, "medium");
 	color: var(--icon);
 
-	&--dark_mode:hover  { &, &.selected { color: var(--theme-dark-hover); } }
-	&--nature:hover     { &, &.selected { color: var(--theme-nature-hover); } }
+	&--dark_mode:hover { &, &.selected { color: var(--theme-dark-hover); } }
+	&--nature:hover { &, &.selected { color: var(--theme-nature-hover); } }
 	&--light_mode:hover { &, &.selected { color: var(--theme-light-hover); } }
 }
 
 .page-header {
 	@include m.flex($justify: space-between, $align: center);
 
-	grid-area: header;
-	gap:       map-get(v.$sizes, "medium");
+	grid-area:  header;
+	gap:        map-get(v.$sizes, "medium");
 
 	&__settings {
-		@include m.flex();
+		@include m.flex(column, nowrap, center, end);
 
-		gap: map-get(v.$sizes, "medium");
+		gap:      map-get(v.$sizes, "medium");
 	}
 
 	&__title {
@@ -55,31 +57,46 @@
 		color: var(--header-title);
 	}
 
+	// If we are on the homepage:
 	&:has(+ .home) {
-		@include m.flex(column, $justify: center);
+		@include m.flex(column, nowrap, center, center);
 
-		.page-header__title { @include m.font(title, title-intro); }
-
-		.page-header__settings { @include m.flex(column, nowrap, center, center); }
+		.page-header__title    { @include m.font(title, title-intro); }
+		.page-header__settings { align-items: center; }
 
 		.languages,
 		.themes {
-			@include m.flex(row, wrap, center);
-
 			text-align: center;
 
 			&__header { width: 100%; }
-
-			&__icon { font-size: map-get(v.$font-sizes, "medium-large"); }
+			&__icon   { font-size: map-get(v.$font-sizes, "medium-large"); }
 		}
 	}
 
+	// If we're not on the homepage:
 	&:not(:has(+ .home)) {
-		.languages,
-		.themes {
-			@include m.flex(column, $align: center);
+		padding: map-get(v.$sizes, "medium");
 
-			&__header { display: none; }
+		.languages,
+		.themes { &__header { display: none; } }
+
+		.languages__flag,
+		.themes__icon {
+			visibility: hidden;
+			opacity: 0;
+			transform: translateX(-100%);
+
+			transition: map-get(v.$transitions, "opacity"),
+			            map-get(v.$transitions, "transform");
+
+			&.active,
+			&.show {
+				display: block;
+				visibility: visible;
+				opacity: 1;
+				transform: translateX(0);
+			}
+			&.active { order: 99; }
 		}
 	}
 }
