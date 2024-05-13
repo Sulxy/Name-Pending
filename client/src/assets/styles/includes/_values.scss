@@ -44,7 +44,12 @@ $sizes:       ( // @formatter:off
 					medium-large:   20px,
 					medium:         15px,
 					medium-small:   10px,
-		            small:          5px
+		            small:          5px,
+					border-radius:  15px,
+					icon-button:    50px,
+					page-footer:    150px,
+					page-header:    85px,
+					users:          150px
               ); // @formatter:on
 
 // Transitions
@@ -58,5 +63,4 @@ $transitions:   ( // @formatter:off
  */
 
 $border: 1px solid var(--border);
-$border-radius: map-get($sizes, "medium");
 $flag_dir: '/images/flags/';

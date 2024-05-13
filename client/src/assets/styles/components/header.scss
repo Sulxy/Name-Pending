@@ -30,7 +30,6 @@
 }
 
 .themes__icon {
-	//@include m.font(icons, "medium");
 	color: var(--icon);
 
 	&--dark_mode:hover { &, &.selected { color: var(--theme-dark-hover); } }
@@ -75,7 +74,8 @@
 
 	// If we're not on the homepage:
 	&:not(:has(+ .home)) {
-		padding: map-get(v.$sizes, "medium");
+		height:  map-get(v.$sizes, page-header);
+		padding: map-get(v.$sizes, medium);
 
 		.languages,
 		.themes { &__header { display: none; } }

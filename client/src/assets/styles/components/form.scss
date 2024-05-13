@@ -2,6 +2,8 @@
 @use "../includes/mixins" as m;
 
 .form {
+	@include m.font(main, small);
+
 	&__button,
 	&__input,
 	&__label {
