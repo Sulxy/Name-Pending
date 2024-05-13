@@ -47,6 +47,9 @@ Create an account, and chat online with other people!
 ![image](https://github.com/Sulxy/Whisper/assets/149080702/834b4295-574e-4b30-bae0-e1b6193e47b6)
 ![image](https://github.com/Sulxy/Whisper/assets/149080702/c18444f7-3fe3-41c9-a78f-1673b57785b7)
 ![image](https://github.com/Sulxy/Whisper/assets/149080702/cfbb34da-ec6f-4eae-aeed-37ba890c51e0)
+![image](https://github.com/Sulxy/Whisper/assets/149080702/f498fb31-d317-4219-9975-32bf39a807c5)
+![image](https://github.com/Sulxy/Whisper/assets/149080702/db208e5b-092f-4655-99f6-1f9dbff94fdd)
+
 
 ## Deployed Application
 [Whisper](https://whisper-o7m0.onrender.com)
