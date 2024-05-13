@@ -154,9 +154,9 @@ function ChatStyle({ activeStyle, setActiveStyle }) {
 function UserList({ users }) {
 	return (
 		<ul className="whispers__user-list user-list">
-			{users.map((user) => (
+			{/* {users.map((user) => (
 				<User key={user.id} {...user} />
-			))}
+			))} */}
 		</ul>
 	);
 }
