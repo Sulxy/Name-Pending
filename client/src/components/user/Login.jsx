@@ -85,12 +85,9 @@ export default function LoginPage() {
 					       placeholder={t('login.password')}/>
 				</div>
 				<div className="form__row login-form__row--checkbox">
-					<input className="form__input form__input--checkbox" type="checkbox" name="checkbox" id="checkbox"/>
-					<label className="form__label form__label--checkbox"
-					       htmlFor="checkbox">{t('login.checkbox')}</label>
+					<div className="form__message form__message--error">{err}</div>
 					<button className="form__button form__button--submit" type="submit">{t('login.button')}</button>
 				</div>
-				<div className="form__message form__message--error">{err}</div>
 			</form>
 		</>
 	);

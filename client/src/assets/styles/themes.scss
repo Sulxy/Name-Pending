@@ -4,25 +4,66 @@
 	--theme-light-hover:  orange;
 
 	&.theme--dark_mode {
+		--body-bg:           #252525;
+		--body-bg-img:       none;
+		--body-text:         white;
+		--border:            rgba(0, 0, 0, 0.1);
+		--box-bg:            rgba(255, 255, 255, 0.1);
+		--box-text:          white;
+		--footer-bg:         transparent;
+		--footer-text:       #555555;
+		--header-bg:         transparent;
+		--header-title:      #B0B0B0;
+		--icons:             white;
+		--link-text:         lightgreen;
+		--message-bg:        rgba(0, 0, 0, 0.1);
+		--message-button-bg: transparent;
+		--message-content:   black;
+		--message-timestamp: gray;
+		--shadow-dark:       rgba(0, 0, 0, 0.6);
+		--shadow-light:      rgba(0, 0, 0, 0.3);
 	}
 
 	&.theme--light_mode {
-		--body-bg:      white;
-		--body-bg-img:  none;
-		--body-text:    black;
-		--border:       rgba(0, 0, 0, 0.1);
-		--box-bg:       rgba(255, 255, 255, 0.8);
-		--box-text:     black;
-		--footer-bg:    transparent;
-		--footer-text:  black;
-		--header-bg:    transparent;
-		--header-title: #B0B0B0;
-		--icons:        black;
-		--link-text:    blue;
-		--shadow-dark:  rgba(0, 0, 0, 0.6);
-		--shadow-light: rgba(0, 0, 0, 0.3);
+		--body-bg:           white;
+		--body-bg-img:       none;
+		--body-text:         black;
+		--border:            rgba(0, 0, 0, 0.1);
+		--box-bg:            rgba(255, 255, 255, 0.8);
+		--box-text:          black;
+		--footer-bg:         transparent;
+		--footer-text:       black;
+		--header-bg:         transparent;
+		--header-title:      #808080;
+		--icons:             black;
+		--link-text:         blue;
+		--message-bg:        rgba(0, 0, 0, 0.1);
+		--message-button-bg: transparent;
+		--message-content:   black;
+		--message-timestamp: gray;
+		--shadow-dark:       rgba(0, 0, 0, 0.6);
+		--shadow-light:      rgba(0, 0, 0, 0.3);
 	}
 
 	&.theme--nature {
+		--body-bg:           #252525;
+		--body-bg-img:       url('/images/backgrounds/Leafy-Spider.jpg');
+		--body-text:         white;
+		--border:            rgba(0, 0, 0, 0.1);
+		--box-bg:            rgba(0, 0, 0, 0.4);
+		--box-text:          white;
+		--footer-bg:         transparent;
+		--footer-bg-img:     linear-gradient(transparent, rgba(40, 40, 40, 0.7));
+		--footer-text:       white;
+		--header-bg:         transparent;
+		--header-title:      #A5BF45;
+		--icons:             white;
+		--link-text:         #E1EA7F;
+		--message-bg:        rgba(0, 0, 0, 0.1);
+		--message-button-bg: transparent;
+		--message-content:   black;
+		--message-timestamp: gray;
+		--shadow-dark:       rgba(0, 0, 0, 0.6);
+		--shadow-light:      rgba(0, 0, 0, 0.3);
 	}
 }
