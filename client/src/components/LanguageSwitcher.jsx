@@ -40,7 +40,6 @@ export default () => {
 		});
 	}, [activeLanguage, showAll, t]);
 
-	console.log(showAll);
 	// Render the component
 	return (
 		<div className="languages">
