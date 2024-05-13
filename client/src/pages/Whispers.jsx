@@ -11,11 +11,21 @@ import '../assets/styles/pages/whispers.scss';
   This method below is just a placeholder for testing purposes
  */
 // Load sample data
-import { users, messages } from '../data/whisperSampleData.js';
-
+import { users, messages as initialMessages } from '../data/whisperSampleData.js';
 
 export default () => {
-	const handleSendMessage = message => {};
+	const [messages, setMessages] = useState(initialMessages);
+
+	const handleSendMessage = (userId, message) => {
+		const newMessage = {
+			id: messages.length + 1, // Generate a unique ID (replace with actual ID generation logic)
+			userId: 1, // Replace with the logged-in user's ID
+			message: message,
+			timestamp: new Date().toISOString(), // Use current timestamp
+		};
+
+		setMessages([...messages, newMessage]);
+	};
 
 	return (
 		<main className="whispers">
@@ -30,7 +40,7 @@ export default () => {
 	);
 }
 
-function MessageList() {
+function MessageList({ messages }) {
 	return (
 		<ul className="whispers__message-list message-list">
 			{messages.map(message => <Message key={message.id}
@@ -42,18 +52,28 @@ function MessageList() {
 
 function Message({ user, message, timestamp }) {
 	return (
-		<li className="message-list__message message">
-			<time className="message__timestamp">{timestamp}</time>
+	  <li className="message-list__message message">
+		<time className="message__timestamp">{timestamp}</time>
+		{user && (
+		  <>
 			<div className="message__username">{user.username}</div>
 			<p className="message__content">{message}</p>
-		</li>
+		  </>
+		)}
+	  </li>
 	);
 }
 
 function ChatInput({ onSendMessage }) {
 	const [inputText, setInputText] = useState('');
 
-	const handleSubmit = (event) => {};
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		if (inputText.trim() !== '') {
+			onSendMessage(1, inputText);
+			setInputText('');
+		}
+	};
 
 	return (
 		<form className="whispers__chat-input chat-input" onSubmit={handleSubmit}>
