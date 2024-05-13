@@ -1,8 +1,9 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-// Use createHttpLink to establish a connection to your GraphQL API server
-const httpLink = createHttpLink({ uri: 'http://localhost:3001/graphql' });
+const httpLink = createHttpLink({
+	uri: '/graphql', // replace with your GraphQL server URI
+});
 
 // Use setContext function to set authentication headers for every request made by Apollo Client
 // It fetches authentication token from localStorage, and if present, adds it to the Authorization header
