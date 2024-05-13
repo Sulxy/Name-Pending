@@ -1,4 +1,3 @@
-// // Copied from Week 21 - Activity 24_Stu_Decode-JWT
 const cors = require('cors');
 const express = require('express');
 const { ApolloServer } = require('@apollo/server');
@@ -23,7 +22,11 @@ const startApolloServer = async () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
-  app.use(cors('*'));
+  app.use(cors({
+    origin: 'https://whisper-o7m0.onrender.com',
+    credentials: true 
+  }));
+
   app.use('/graphql', expressMiddleware(server, {
     context: authMiddleware
   }));
@@ -45,4 +48,4 @@ const startApolloServer = async () => {
 };
 
 // Call the async function to start the server
-  startApolloServer();
+startApolloServer();
