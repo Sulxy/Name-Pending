@@ -9,7 +9,6 @@ export const QUERY_USER = gql`
             posts {
                 _id
                 message
-                timestamp
             }
         }
     }
@@ -20,7 +19,6 @@ export const QUERY_POSTS = gql`
         posts {
             _id
             message
-            timestamp
             user {
                 _id
                 username
@@ -38,6 +36,19 @@ export const LOGIN_USER = gql`
                 username
                 email
             }
+        }
+    }
+`;
+
+export const CREATE_POST = gql`
+    mutation createPost($user: ID!, $message: String!) {
+        createPost(input: { user: $user, message: $message }) {
+            _id
+            user {
+                _id
+                username
+            }
+            message
         }
     }
 `;
