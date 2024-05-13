@@ -7,80 +7,55 @@
  * Maps
  */
 
-// Colors
-$colors:        (
-	                border:         rgba(0, 0, 0, 0.1),
-	                footer-font:    white,
-	                header-bg:      rgba(0, 0, 0, 0.9),
-	                header-font:    #B0B0B0,
-	                header-link:    white,
-	                link-active:    darkslateblue,
-	                shadow:         rgba(0, 0, 0, 0.3)
-                );
+// Font Families
+$fonts:       ( // @formatter:off
+		              icons: "Material Symbols Outlined",
+		              main:  (Poppins, sans-serif),
+		              title: ("Playfair Display", serif)
+              ); // @formatter:off
 
-// Fonts
-$fonts: ( // @formatter:off
-					icons:  "Material Symbols Outlined",
-			        main:   (Poppins, sans-serif),
-					title:  ("Playfair Display", serif)
-        ); // @formatter:on
-
-// Font Sizes
-$font-sizes:    ( // @formatter:off
-	                xlarge:       5rem,
-	                large:        2rem,
-	                medium-large: 1.5rem,
-	                medium:       1rem,
-	                medium-small: 0.9rem,
-	                small:        0.7rem,
-	                tiny:         0.6rem
-                ); // @formatter:on
+// Font sizes
+$font-sizes:  ( // @formatter:off
+					medium-large: 1.4rem,
+		            medium:       1rem,
+		            medium-small: 0.8rem,
+		            small:        0.7rem,
+		            title:        2.5rem,
+					title-intro:  5rem
+              ); // @formatter:on
 
 // Screen resolution
-$resolutions:   ( // @formatter:off
+$resolutions: ( // @formatter:off
 		              desktop: (min-width: 1025px, max-width: null), // No max-width for desktop
-		              tablet: (min-width: 768px, max-width: 1024px),
-		              mobile: (min-width: null, max-width: 767px),
-                ); // @formatter:on
-// Shadows (box-shadow, text-shadow, and filter: drop-shadow())
-$shadows:   ( // @formatter:off
-	                none:         0 0 0 map-get($colors, "shadow"),
-	                small:        0 1.5px 3px map-get($colors, "shadow"),
-	                medium:       0 2.5px 5px map-get($colors, "shadow"),
-	                medium-large: 0 5px 7px map-get($colors, "shadow"),
-	                large:        0 5px 10px map-get($colors, "shadow")
-                ); // @formatter:on
+		              tablet:  (min-width: 768px, max-width: 1024px),
+		              mobile:  (min-width: null, max-width: 767px),
+              ); // @formatter:on
 
-// Sizing
-$sizes: ( // @formatter:off
-		        xlarge:       100px,
-		        larger:       75px,
-		        large:        50px,
-		        medium-large: 25px,
-		        medium:       15px,
-		        medium-small: 10px,
-		        small:        5px,
-		        xsmall:       4px
-        ); // @formatter:on
+// Shadows (box-shadow, text-shadow, and filter: drop-shadow())
+$shadows:     ( // @formatter:off
+		            none:   0 0 0 var(--shadow-light),
+					light:  0 1.5px 1px var(--shadow-light),
+					medium: 0 2.5px 5px var(--shadow-dark),
+              ); // @formatter:on
+
+// Sizes
+$sizes:       ( // @formatter:off
+					large:          40px,
+					medium-large:   20px,
+					medium:         15px,
+		            small:          5px
+              ); // @formatter:on
 
 // Transitions
 $transitions:   ( // @formatter:off
 					button:         font-size .25s ease,
-	                bg-color:       background-color .25s ease,
-	                bg-color-long:  background-color 1s ease,
-	                box-shadow:     box-shadow .25s ease,
-					color:          color .25s ease,
-					filter:         filter .25s ease,
-	                text-shadow:    text-shadow .25s ease,
-					transform:      transform .25s ease
-                ); // @formatter:on
-
+					opacity:        opacity .25s ease,
+	                transform:      transform .25s ease
+				); // @formatter:on
 /***
  * Values
  */
 
-$border:        1px solid map-get($colors, "border");
+$border: 1px solid var(--border);
 $border-radius: map-get($sizes, "medium");
-$header-height: 50px;
-
 $flag_dir: '/images/flags/';

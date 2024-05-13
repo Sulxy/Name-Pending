@@ -1,35 +1,42 @@
 @use "./includes/reset";
-@use "./includes/mixins";
-@use "./includes/values" as x;
+@use "./includes/mixins" as m;
+@use "common";
+@use "themes";
 @use "components/header";
 @use "components/content";
 @use "components/form";
 @use "components/footer";
 
 body {
-	font-family: map-get(x.$fonts, "main");
-	font-size:   88%;
+	@include m.font(main, 88%);
+
+	background-color: var(--body-bg);
+	color:            var(--body-text);
 }
 
 #root {
 	display:            grid;
+
+	// Default grid format
 	grid-template-areas:
-			"header"
-			"content"
-			"footer";
-	grid-template-rows: map-get(x.$sizes, "xlarge") auto map-get(x.$sizes, "xlarge");
+		"header"
+		"content"
+		"footer";
+	grid-template-rows: auto 1fr auto;
 
 	min-height:         100vh;
-	min-width:          400px;
+	min-width:          375px;
 	width:              100vw;
+	height:             auto;
 
-	@include mixins.res(desktop) {
+	// Only show this grid template if on a desktop resolution on the home page.
+	@include m.res(desktop) {
 		&:has(> .home) {
 			grid-template-areas:
 				"header content"
 				"footer footer";
-			grid-template-columns:  1fr 1fr;
-			grid-template-rows:     auto map-get(x.$sizes, "xlarge");
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows:    1fr auto;
 		}
 	}
 }

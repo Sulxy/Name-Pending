@@ -12,12 +12,16 @@ export default () => {
 	// State hooks
 	const [activeTheme, setActiveTheme]     = React.useState(settings.themes.default);
 	const [previousTheme, setPreviousTheme] = React.useState(null);
+	const [showAll, setShowAll]             = React.useState(false);
 
-	// Sets the new theme as active and the previous theme as the active one
+	// Sets the new theme as active and the previous theme as the active one, and toggle .show class
 	const handleThemeChange = (theme) => {
-		setPreviousTheme(activeTheme);
-		setActiveTheme(theme);
-		// TODO: Save settings for logged in user.
+		if (activeTheme !== theme) {
+			setShowAll(false);
+			setPreviousTheme(activeTheme);
+			setActiveTheme(theme);
+			// TODO: Save settings for logged in user.
+		} else setShowAll(!showAll);
 	};
 
 	// useEffect hook to listen for changes in the active or previous theme
@@ -43,12 +47,13 @@ export default () => {
 				             classNames: ['icon',
 				                          'themes__icon',
 				                          `themes__icon--${theme}`,
+				                          showAll ? 'show' : '',
 				                          activeTheme === theme ? 'active' : ''].join(' '),
 				             // Get the translated label for the theme
 				             label: t(`themes.aria.${theme}`)
 			             };
 		             });
-	}, [activeTheme, t]);
+	}, [activeTheme, showAll, t]);
 
 	// Render the component
 	return (

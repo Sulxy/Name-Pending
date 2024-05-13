@@ -1,24 +1,23 @@
-@use "values" as x; // Predefined values and settings
+@use "mixins" as m;
+@use "values" as v;
 
 .icon {
-	font-family:             map-get(x.$fonts, "icons");
+	@include m.font(icons, medium-large);
+
 	font-variation-settings: 'FILL' 0,
 	                         'wght' 200,
 	                         'GRAD' 0,
 	                         'opsz' 24;
 }
 
-@mixin icon-button-transform($normal,$max) {
-	font-size:   map-get(x.$font-sizes, $normal);
+@mixin icon-button-transform($normal,$mav) {
+	@include m.shadow(text, light);
+
+	cursor:      pointer;
 	line-height: 100%;
 
-	text-shadow: map-get(x.$shadows, "small");
-	transition:  map-get(x.$transitions, "button"),
-	             map-get(x.$transitions, "text-shadow");
+	transition:  map-get(v.$transitions, "button"),
+	             map-get(v.$transitions, "text-shadow");
 
-	&:hover {
-		cursor:      pointer;
-		font-size:   map-get(x.$font-sizes, $max);
-		text-shadow: map-get(x.$shadows, "medium");
-	}
+	&:hover { font-size:   map-get(v.$font-sizes, medium); }
 }

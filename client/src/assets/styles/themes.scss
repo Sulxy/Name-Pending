@@ -1,31 +1,28 @@
 :root body {
-	&.dark {
-		--color-bg:          #202020;
-		--color-edit:        #5660A7;
-		--color-error:       #DD8506;
-		--color-focus:       #004252;
-		--color-hover:       rgba(200, 200, 255, .5);
-		--color-hover2:      rgba(150, 150, 255, .5);
-		--color-link:        lightgreen;
-		--color-notes-bg:    #BB8606;
-		--color-selected:    #71A5D0;
-		--color-text:        white;
-		--color-menu-bg:     rgba(80, 80, 80, 0.9);
-		--color-menu-border: rgba(0, 0, 0, 0.5);
+	--theme-dark-hover:   darkgray;
+	--theme-nature-hover: lightgreen;
+	--theme-light-hover:  orange;
+
+	&.theme--dark_mode {
 	}
 
-	&.light {
-		--color-bg:          white;
-		--color-edit:        #D9D2E9;
-		--color-error:       red;
-		--color-focus:       #D3FFCE;
-		--color-hover:       rgba(200, 200, 255, .5);
-		--color-hover2:      rgba(150, 150, 255, .5);
-		--color-link:        darkgreen;
-		--color-notes-bg:    lightyellow;
-		--color-selected:    #FFCA4A;
-		--color-text:        black;
-		--color-menu-bg:     rgba(220, 220, 220, 0.9);
-		--color-menu-border: rgba(0, 0, 0, 0.5);
+	&.theme--light_mode {
+		--body-bg:      white;
+		--body-bg-img:  none;
+		--body-text:    black;
+		--border:       rgba(0, 0, 0, 0.1);
+		--box-bg:       rgba(255, 255, 255, 0.8);
+		--box-text:     black;
+		--footer-bg:    transparent;
+		--footer-text:  black;
+		--header-bg:    transparent;
+		--header-title: #B0B0B0;
+		--icons:        black;
+		--link-text:    blue;
+		--shadow-dark:  rgba(0, 0, 0, 0.6);
+		--shadow-light: rgba(0, 0, 0, 0.3);
+	}
+
+	&.theme--nature {
 	}
 }
