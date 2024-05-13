@@ -4,13 +4,18 @@
 .page-footer {
 	@include m.flex(column, nowrap, center, center);
 
-	grid-area:        footer;
-	gap:              map-get(v.$sizes, "medium");
-	padding:          map-get(v.$sizes, "medium");
+	grid-area:           footer;
+	gap:                 map-get(v.$sizes, "medium");
+	padding:             map-get(v.$sizes, "medium");
 
-	background-color: var(--footer-bg);
-	color:            var(--footer-text);
-	font-size:        map-get(v.$font-sizes, small);
+	background-color:    var(--footer-bg);
+	background-image:    var(--footer-bg-img);
+	background-position: center;
+	background-repeat:   no-repeat;
+	background-size:     cover;
+
+	color:               var(--footer-text);
+	font-size:           map-get(v.$font-sizes, small);
 
 	&__list {
 		@include m.flex();

@@ -5,6 +5,9 @@ export const settings = {
 		default: 'en',
 		list:    ['en', 'de', 'fr', 'es']
 	},
+	messages: {
+		defaultView: 'text-message'
+	},
 	// Set the default theme, and list the supported themes.
 	themes:     {
 		default: 'light_mode',

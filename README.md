@@ -43,8 +43,13 @@ The settings file, `client/src/config/settings.js`, has already been mentioned s
 Create an account, and chat online with other people! 
 
 ## Screenshots
+![image](https://github.com/Sulxy/Whisper/assets/149080702/bd60e107-9794-4780-9e34-db88baa94d21)
+![image](https://github.com/Sulxy/Whisper/assets/149080702/834b4295-574e-4b30-bae0-e1b6193e47b6)
+![image](https://github.com/Sulxy/Whisper/assets/149080702/c18444f7-3fe3-41c9-a78f-1673b57785b7)
+![image](https://github.com/Sulxy/Whisper/assets/149080702/cfbb34da-ec6f-4eae-aeed-37ba890c51e0)
 
 ## Deployed Application
+[Whisper](https://whisper-o7m0.onrender.com)
 
 ## License
 This project is licensed under the MIT license.

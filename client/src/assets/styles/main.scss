@@ -10,8 +10,12 @@
 body {
 	@include m.font(main, 88%);
 
-	background-color: var(--body-bg);
-	color:            var(--body-text);
+	background-color:    var(--body-bg);
+	background-image:    var(--body-bg-img);
+	background-position: center;
+	background-repeat:   no-repeat;
+	background-size:     cover;
+	color:               var(--body-text);
 }
 
 #root {
@@ -24,10 +28,10 @@ body {
 		"footer";
 	grid-template-rows: auto 1fr auto;
 
-	min-height:         100vh;
+	height:             100vh;
 	min-width:          375px;
 	width:              100vw;
-	height:             auto;
+	overflow:           hidden;
 
 	// Only show this grid template if on a desktop resolution on the home page.
 	@include m.res(desktop) {
