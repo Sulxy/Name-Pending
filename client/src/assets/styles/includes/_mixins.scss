@@ -1,0 +1,92 @@
+@use "values" as v;
+
+// Create borders with the ability to define sides
+@mixin borders($values: (), $default: true) {
+	@if $default == false {
+		border: none;
+
+		@each $side in $values {
+			border-#{$side}: v.$border;
+		}
+	} @else {
+		border: v.$border;
+
+		@each $side in $values {
+			border-#{$side}: none;
+		}
+	}
+}
+
+@mixin flag($language) {
+	display:             inline-block;
+	background-image:    url('#{v.$flag_dir}#{$language}.svg');
+	background-position: 50%;
+	background-size:     contain;
+	background-repeat:   no-repeat;
+}
+
+// Build a flexbox
+@mixin flex($direction: row, $wrap: nowrap, $justify: null, $align: null) {
+	display:   flex;
+	flex-flow: $direction $wrap;
+
+	@if $justify != null {
+		justify-content: $justify;
+	};
+	@if $align != null {
+		align-items: $align;
+	}
+}
+
+// Font selection
+@mixin font($font, $size: null) {
+	font-family: map-get(v.$fonts, $font);
+
+	@if $size != null {
+		@if map-has-key(v.$font-sizes, $size) {
+			font-size: map-get(v.$font-sizes, $size);
+		} @else {
+			font-size: $size;
+		}
+	}
+}
+
+@mixin hovergrow($scale) {
+	@include shadow(drop, "light");
+	transition:  map-get(v.$transitions, "transform"),
+	             map-get(v.$transitions, "color");
+
+	&:hover { transform: scale($scale); }
+}
+
+// Media queries for different devices. Resolutions are defined in _values.scss
+@mixin res($devices...) {
+	@each $device in $devices {
+		$min-width: map-get(map-get(v.$resolutions, $device), min-width);
+		$max-width: map-get(map-get(v.$resolutions, $device), max-width);
+
+		@if $min-width != null and $max-width != null {
+			@media (min-width: $min-width) and (max-width: $max-width) {
+				@content;
+			}
+		} @else if $min-width != null {
+			@media (min-width: $min-width) {
+				@content;
+			}
+		} @else if $max-width != null {
+			@media (max-width: $max-width) {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin shadow($type, $strength) {
+	@if $type == text {
+		text-shadow: map-get(v.$shadows, $strength);
+	} @else if $type == box {
+		box-shadow: map-get(v.$shadows, $strength);
+	} @else if $type == drop {
+		filter: drop-shadow(map-get(v.$shadows, $strength));
+	}
+}

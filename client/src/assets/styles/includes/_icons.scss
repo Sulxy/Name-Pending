@@ -1,0 +1,23 @@
+@use "mixins" as m;
+@use "values" as v;
+
+.icon {
+	@include m.font(icons, medium-large);
+
+	font-variation-settings: 'FILL' 0,
+	                         'wght' 200,
+	                         'GRAD' 0,
+	                         'opsz' 24;
+}
+
+@mixin icon-button-transform($normal,$mav) {
+	@include m.shadow(text, light);
+
+	cursor:      pointer;
+	line-height: 100%;
+
+	transition:  map-get(v.$transitions, "button"),
+	             map-get(v.$transitions, "text-shadow");
+
+	&:hover { font-size:   map-get(v.$font-sizes, medium); }
+}

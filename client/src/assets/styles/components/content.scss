@@ -1,0 +1,9 @@
+@use "../includes/mixins" as m;
+@use "../includes/values" as v;
+
+.content {
+	@include m.flex(column, nowrap, center);
+
+	grid-area: content;
+	padding:   map-get(v.$sizes, "medium");
+}

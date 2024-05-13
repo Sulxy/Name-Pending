@@ -1,43 +1,50 @@
-@use "reset";
-@use "mixins";
-@use "values" as x;
-@use "sections/header";
-@use "sections/content";
-@use "sections/form";
-@use "sections/footer";
+@use "./includes/reset";
+@use "./includes/mixins" as m;
+@use "./includes/values" as v;
+@use "common";
+@use "themes";
+@use "components/header";
+@use "components/content";
+@use "components/form";
+@use "components/footer";
 
 body {
-	font-size: 88%;
+	@include m.font(main, 88%);
+
+	background-attachment: fixed;
+	background-color:      var(--body-bg);
+	background-image:      var(--body-bg-img);
+	background-position:   center;
+	background-repeat:     no-repeat;
+	background-size:       cover;
+	color:                 var(--body-text);
 }
 
 #root {
-	@include mixins.flex(column);
-	min-height: 100vh;
+	display:            grid;
 
-}
-.content {
-	@include mixins.flex(column);
-	//align-items: center;
-	min-height: 100%;
-	flex-grow: 1;
-}
+	// Default grid format
+	grid-template-areas:
+		"header"
+		"content"
+		"footer";
+	grid-template-rows: map-get(v.$sizes, page-header) 1fr map-get(v.$sizes, page-footer);
 
-.content {
-	//max-width:  1024px;
-	margin-top: x.$header-height;
-}
+	min-width:          375px;
+	width:              100vw;
+	height:             100vh;
+	overflow:           hidden;
 
-.link {
-	color: blue;
-	text-decoration: none;
-}
-
-.languages {
-	@include mixins.flex();
-	gap: map-get(x.$sizes, "small");
-
-	&__flag {
-		display: inline-block;
-		cursor: pointer;
+	// Only show this grid template if on a desktop resolution on the home page.
+	@include m.res(desktop) {
+		&:has(> .home) {
+			grid-template-areas:
+				"header content"
+				"footer footer";
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows:    1fr auto;
+		}
 	}
+
+	&:not(:has(> .home)) { height: 100vh; }
 }

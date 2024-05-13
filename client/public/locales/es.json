@@ -9,6 +9,7 @@
 		}
 	},
 	"languages":  {
+		"title": "Seleccione su idioma",
 		"aria": {
 			"de": "Alemán",
 			"en": "Inglés",
@@ -22,7 +23,7 @@
 		},
 		"formTitle": "Iniciar sesión",
 		"linkText":  "Registrarse",
-		"button":    "Iniciar sesión",
+		"button":    "Ingresar",
 		"checkbox":  "Mantenerme conectado",
 		"username":  "Nombre de usuario",
 		"password":  "Contraseña"
@@ -48,5 +49,14 @@
 			"title":       "",
 			"description": ""
 		}
+	},
+	"themes":    {
+		"title": "Selecciona tu tema",
+		"aria":  {
+			"dark":   "Oscuro",
+			"nature": "Naturaleza",
+			"light":  "Claro"
+		}
 	}
+
 }

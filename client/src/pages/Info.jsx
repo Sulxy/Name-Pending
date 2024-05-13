@@ -1,9 +1,8 @@
-// User.jsx
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
 // Load CSS
-import '../assets/styles/info.scss';
+import '../assets/styles/pages/info.scss';
 
 export default () => {
 	return (

@@ -1,0 +1,24 @@
+@use "../includes/values" as v;
+@use "../includes/mixins" as m;
+
+.form {
+	@include m.font(main, small);
+
+	&__button,
+	&__input,
+	&__label {
+		padding: map-get(v.$sizes, "small");
+	}
+
+	&__input {
+		@include m.borders();
+	}
+
+	&__header { @include m.flex($justify: space-between, $align: center); }
+	&__message {}
+	//&__row { @include m.flex(); }
+
+	&__title {
+		//@include m.font(title, medium);
+	}
+}

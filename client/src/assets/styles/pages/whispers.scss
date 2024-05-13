@@ -1,0 +1,129 @@
+@use "../includes/mixins" as m;
+@use "../includes/values" as v;
+@use "../includes/icons" as i;
+@use "../includes/message-style";
+
+.whispers {
+	display:            grid;
+	grid-template-areas:
+		"messages"
+		"input";
+	grid-template-rows: 1fr auto;
+	position:           relative;
+	height:             calc(100vh - map-get(v.$sizes, page-header));
+
+	background-color:   var(--box-bg);
+
+	@include m.res(mobile) {
+		.user-list { display: none; }
+	}
+	@include m.res(tablet, desktop) {
+		@include m.borders();
+		@include m.shadow(box, medium);
+
+		grid-template-areas:
+			"messages users"
+			"input users";
+
+		grid-template-columns:  auto map-get(v.$sizes, users);
+		grid-template-rows:     auto map-get(v.$sizes, large);
+
+		height: calc(100vh - map-get(v.$sizes, page-header) - map-get(v.$sizes, page-footer) - 50px);
+
+		margin: auto;
+
+		border-radius: map-get(v.$sizes, border-radius);
+	}
+}
+
+.chat-input {
+	@include m.flex();
+	grid-area:  input;
+
+	min-height: map-get(v.$sizes, medium-large);
+
+	&__field {
+		@include m.borders((top), false);
+		border-bottom-left-radius: map-get(v.$sizes, border-radius);
+
+		flex-grow:                 1;
+		padding:                   map-get(v.$sizes, medium-small);
+
+		background-color:          transparent;
+		color:                     var(--body-text);
+
+		&:focus { outline: none; }
+	}
+
+	&__send-button {
+		@include m.borders((top), false);
+		@include i.icon-button-transform(medium-large, large);
+
+		flex-shrink:      0;
+		flex-basis:       map-get(v.$sizes, icon-button);
+
+		background-color: var(--message-button-bg);
+		color:            var(--body-text);
+	}
+}
+
+.chat-styles {
+	@include m.flex(row, nowrap, center, center);
+	@include m.font(icons, medium);
+
+	position:   absolute;
+	right:      map-get(v.$sizes, medium);
+	gap:        map-get(v.$sizes, small);
+	list-style: none;
+
+	cursor:     pointer;
+
+	@include m.res(mobile) {
+		top: - map-get(v.$sizes, medium-small);
+	}
+	@include m.res(tablet, desktop) {
+		top: - map-get(v.$sizes, medium-large);
+	}
+
+	&__icon {
+		@include m.hovergrow(1.5);
+	}
+}
+
+.message-list {
+	@include m.flex(column);
+
+	grid-area:  messages;
+
+	gap:        map-get(v.$sizes, small);
+	padding:    map-get(v.$sizes, medium-small);
+	overflow-y: auto;
+
+	list-style: none;
+}
+
+.message {
+	gap:           map-get(v.$sizes, small);
+	padding:       map-get(v.$sizes, medium-small);
+
+	border-radius: map-get(v.$sizes, border-radius);
+
+	&__timestamp,
+	&__username { font-size: map-get(v.$font-sizes, small); }
+
+	&.me { background-color: var(--message-me-bg); }
+}
+
+.user-list {
+	@include m.borders((left), false);
+	@include m.flex(column);
+
+	grid-area:       users;
+
+	padding:         map-get(v.$sizes, "medium");
+	overflow-y:      auto;
+
+	list-style-type: none;
+
+	&__user { padding: map-get(v.$sizes, "tiny"); }
+}
