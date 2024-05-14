@@ -8,7 +8,7 @@ const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
-const PORT = process.env.PORT; // || 3001;
+const PORT = process.env.PORT || 3001; // Update to use environment variable or default to 3001
 const app = express();
 const server = new ApolloServer({
   typeDefs,
@@ -22,10 +22,7 @@ const startApolloServer = async () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
-  app.use(cors({
-    origin: 'https://whisper-o7m0.onrender.com',
-    credentials: true 
-  }));
+  app.use(cors()); // Allow all origins during development
 
   app.use('/graphql', expressMiddleware(server, {
     context: authMiddleware
