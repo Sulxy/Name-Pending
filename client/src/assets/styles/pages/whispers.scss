@@ -30,6 +30,7 @@
 
 		height: calc(100vh - map-get(v.$sizes, page-header) - map-get(v.$sizes, page-footer) - 50px);
 
+		width:  80vw;
 		margin: auto;
 
 		border-radius: map-get(v.$sizes, border-radius);
