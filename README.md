@@ -43,12 +43,14 @@ The settings file, `client/src/config/settings.js`, has already been mentioned s
 Create an account, and chat online with other people! 
 
 ## Screenshots
-![image](https://github.com/Sulxy/Whisper/assets/149080702/bd60e107-9794-4780-9e34-db88baa94d21)
-![image](https://github.com/Sulxy/Whisper/assets/149080702/834b4295-574e-4b30-bae0-e1b6193e47b6)
-![image](https://github.com/Sulxy/Whisper/assets/149080702/c18444f7-3fe3-41c9-a78f-1673b57785b7)
-![image](https://github.com/Sulxy/Whisper/assets/149080702/cfbb34da-ec6f-4eae-aeed-37ba890c51e0)
-![image](https://github.com/Sulxy/Whisper/assets/149080702/f498fb31-d317-4219-9975-32bf39a807c5)
-![image](https://github.com/Sulxy/Whisper/assets/149080702/db208e5b-092f-4655-99f6-1f9dbff94fdd)
+![image](https://github.com/Sulxy/Whisper/assets/149080702/dd81916a-389a-4b73-b318-0df54618b9ba)
+![image](https://github.com/Sulxy/Whisper/assets/149080702/894bd4de-b21e-4370-a2b1-ed3160d22b83)
+![image](https://github.com/Sulxy/Whisper/assets/149080702/edc650f6-e367-46df-b53b-e26fd4897a9f)
+![image](https://github.com/Sulxy/Whisper/assets/149080702/d6baa27e-3620-4e86-95f7-37faaeccb5c9)
+![image](https://github.com/Sulxy/Whisper/assets/149080702/0ea0edef-2d05-4fec-8f86-b8375790e9ed)
+![image](https://github.com/Sulxy/Whisper/assets/149080702/025e7059-4a00-41d4-8bc7-573f03cccf16)
+![image](https://github.com/Sulxy/Whisper/assets/149080702/add528e6-5e67-4abc-bece-29d36ea910c5)
+![image](https://github.com/Sulxy/Whisper/assets/149080702/af53d2f6-961c-49e4-b491-de089f04b14b)
 
 
 ## Deployed Application
